@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  web:
+    build: ./App
+    volumes:
+      - ./html:/var/www/html
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+
+  mysql:
+    build: ./MySQL
+    volumes:
+      - ./MySQL/DB:/var/lib/mysql
+#    image: original_mysql_world
+    environment:
+      - MYSQL_ROOT_PASSWORD=kstm
