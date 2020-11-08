@@ -1,6 +1,6 @@
 # hackathon2020-Calendar-
 
-##docker, docker-composeによるテスト用コマンド
+##docker, docker-composeによるテスト用コマンド  
 コンテナのビルド : docker-compose build  
 コンテナの起動 : docker-compose up -d  
 コンテナの生死確認 : docker-compose ps  
