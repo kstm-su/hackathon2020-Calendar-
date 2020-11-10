@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 
-<html>
-  <head>
-    <title>test</title>
-  </head>
+<html lang="ja">
 
-  <body>
-    hello!
-  </body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="design.css">
+    <title>test</title>
+</head>
+
+<body>
+
+    <div class="document">
+
+        <h1><span>カレンダーのアプリケーション開発</span></h1>
+
+        <section id="hitsuyou">
+            <h2>必要な点</h2>
+
+            <ul>
+                <li>時間割 (n限) での手軽な入力と、それ以外での入力 (例えばバイトの予定を入れるのに必要)</li>
+                <li>ealps, moodleから出力したカレンダー (.ics) のインポート, エクスポート</li>
+                <li>優先度 (期限) 付きToDoと、それ以外のToDoの区別, 併記<br> ○月○日まで と nヵ月以内にやる と 期限なし くらいに分けても良いかもしれない</li>
+                <li>PCブラウザにおけるUIとスマホから見た際のUI</li>
+                <li>DB</li>
+                <li>テンプレ程度の利用規約 (カレンダー程度のデータなら、個人情報にも個人識別符号にもあたらない…ハズ と思ったけど、メールアドレスは (場合によっては, 名前@所属.comとかだと個人を特定できるので) 個人情報なのでその点微妙)</li>
+                <li>タスクの抽象化クラスをユーザーがカスタマイズできるようにしたい</li>
+                <li>タスクのドラッグアンドドロップ</li>
+                <li>(ブラウザの) 通知機能</li>
+            </ul>
+
+        </section>
+
+        <section id="arebana">
+            <h2>あれば良い点</h2>
+
+            <ul>
+                <li>ログイン, 認証系 (この点については、当日ローカルで動かす程度なら、間に合いませんでしたー でもどうにかなるので, 問題はガワだけは確実に仕上げること)</li>
+                <li>予定の共有?</li>
+                <li>設定か何かで、時間割入力でのToDoを切れるようにすれば (デフォルトの入力手段を時間でのそれにすれば) 、ただのカレンダー付きToDoアプリとして学生以外も使いやすくなる</li>
+            </ul>
+
+        </section>
+
+    </div>
+
+</body>
+
 </html>

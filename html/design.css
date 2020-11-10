@@ -1,0 +1,231 @@
+@charset "utf-8";
+
+/***********************************************************************
+ * Reset
+ **********************************************************************/
+
+
+/***********************************************************************
+ * Structure
+ **********************************************************************/
+
+html {
+    height: 100%;
+    background-color: #e5e5e5;
+}
+
+
+/***********************************************************************
+ * header
+ **********************************************************************/
+
+
+/***********************************************************************
+ * h1-h6
+ **********************************************************************/
+
+h1 {
+    margin: auto auto 20px;
+    width: 50%;
+    padding: 0.5em;
+    background-color: #14da2e;
+    display: block;
+    border: 10px outset #0000FF;
+    color: #6600FF;
+    font-weight: 700;
+    text-align: center;
+}
+
+h1>span {
+    padding: 2px;
+    background-color: #fdfdfd;
+    font-size: large;
+}
+
+h2 {
+    border-style: dotted solid;
+    border-color: #33cc00;
+    border-width: 2px 1px 2px 8px;
+    padding: 2px 2px 2px 0.5em;
+    font-size: large;
+    text-align: left;
+    font-weight: bold;
+    color: #006300;
+    font-style: italic;
+    margin-bottom: 0.6em;
+}
+
+h3 {
+    border-left: 5px solid #bd0cd4;
+    border-bottom: 1px solid #124ac2;
+    border-width: 0px 0px 2px 2px;
+    padding: 2px 0.5em;
+    margin: 0.5em 0.6em;
+    font-size: normal;
+    text-align: left;
+    font-weight: 500;
+    color: black;
+    margin-top: 1em;
+}
+
+h4 {
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+h5 {
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+
+/***********************************************************************
+ * main
+ **********************************************************************/
+
+p {
+    margin: 5;
+    text-indent: 1em;
+}
+
+em {
+    color: #124ac2;
+    font-weight: 700;
+}
+
+.document {
+    font-family: 'メイリオ', 'Meiryo', sans-serif;
+    background-color: #FAFAFA;
+    font-size: large;
+    text-align: left;
+    width: 50em;
+    margin: 2em auto;
+    padding: 2.5em;
+    line-height: 150%;
+    border-left: solid 1px #dddddd;
+    border-top: solid 1px #dddddd;
+    border-right: solid 3px #aaaaaa;
+    border-bottom: solid 3px #aaaaaa;
+    font-weight: normal;
+}
+
+.flex {
+    display: flex;
+}
+
+.text {
+    margin-left: 1.5em;
+    width: 67%;
+}
+
+.caption {
+    width: 33%;
+}
+
+.line {
+    border-style: solid;
+    padding: 10px;
+    margin: 15px;
+    border-color: #00a5de;
+    margin-top: 0.8em;
+}
+
+.h3p {
+    margin-left: 1em;
+}
+
+
+/***********************************************************************
+ * def th
+ **********************************************************************/
+
+.def {
+    position: relative;
+    padding: 1em 0.5em;
+    margin: 1em;
+    font-weight: normal;
+    border: solid 2px #000000;
+    border-right: solid 4px #000000;
+    border-bottom: solid 4px #000000;
+    width: auto;
+}
+
+.def>p {
+    margin-left: 1em;
+    text-indent: 1em;
+}
+
+.def-t {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    background-color: #FAFAFA;
+    padding: 0 0.5em;
+    margin: 1em 2em;
+    font-weight: normal;
+    border: solid 2px #000000;
+    border-right: solid 4px #000000;
+    border-bottom: solid 4px #000000;
+    width: 3.5em;
+}
+
+.th {
+    position: relative;
+    padding: 1em 0.5em;
+    margin: 1em;
+    font-weight: normal;
+    border: solid 2px #6091d3;
+    border-radius: 10px;
+    width: auto;
+}
+
+.th>p {
+    margin-left: 1em;
+    text-indent: 1em;
+}
+
+.th-t {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    background-color: #FAFAFA;
+    padding: 0 0.5em;
+    margin: 1em 2em;
+    font-weight: normal;
+    border: solid 2px #6091d3;
+    border-radius: 10px;
+    width: 2em;
+}
+
+
+/***********************************************************************
+ * maru kakomi
+ **********************************************************************/
+
+.maru {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    flex-flow: column;
+    vertical-align: top;
+}
+
+.size_normal {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.letter {
+    font-size: noemal;
+    line-height: 1.0em;
+}
+
+.circle {
+    color: black;
+    border: 1px solid black;
+}
