@@ -2,6 +2,7 @@ version: '3'
 
 services:
   web:
+    container_name: web
     build: ./App
     volumes:
       - ./html:/var/www/html
@@ -12,9 +13,10 @@ services:
       - mysql
 
   mysql:
+    container_name: mysql
     build: ./MySQL
     volumes:
       - ./MySQL/DB:/var/lib/mysql
-#    image: original_mysql_world
+    # image: original_mysql_world
     environment:
       - MYSQL_ROOT_PASSWORD=kstm
