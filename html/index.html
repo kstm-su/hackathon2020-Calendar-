@@ -5,6 +5,87 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="design.css">
     <title>PC用カレンダーアプリデザイン</title>
+
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- template for the modal component -->
+    <script type="text/x-template" id="modal-template" defer>
+      <transition name="modal">
+        <div class="modal-mask">
+          <div class="modal-wrapper">
+            <div class="modal-container">
+
+              <div class="modal-header">
+                <slot name="header">
+                </slot>
+              </div>
+              <div class="modal-body">
+                <slot name="body">
+
+                    <div class="flex">
+                        <p>テーマ</p>
+                        <input v-model="myThema">
+                    </div>
+
+                    <div class="flex">
+                        <p>日程の始まり</p>
+                        <input v-model="startSchedule">
+                    </div>
+
+                    <div class="flex">
+                        <p>日程の終わり</p>
+                        <input v-model="endSchedule">
+                    </div>
+
+                    <div class="flex">
+                        <p>期限</p>
+                        <input v-model="deadline">
+                    </div>
+
+                    <div class="flex">
+                        <p>繰り返し(曜日、毎週、隔週)</p>
+                    </div>
+
+                    <div class="flex">
+                            <p>属するタスク郡</p>
+                    </div>
+
+                    <div class="flex">
+                        <p>優先度(0~9)</p>
+                        <input v-model="priority">
+                    </div>
+
+                    <div class="flex">
+                        <p>重複の許容(Yes/No)</p>
+                        <button value="yes" v-bind:disabled="yClick"
+                         v-on:click="yesClick">Yes</button><br>
+
+                        <button value="no" v-bind:disabled="nClick"
+                        v-on:click="noClick">no</button><br>
+                    </div>
+
+                    <div class="flex">
+                            <p>メモ</p>
+                            <input v-model="memo">
+                    </div>
+
+                </slot>
+              </div>
+              <div class="modal-footer">
+                <slot name="footer">
+                    footer
+                  <button class="modal-default-button" @click="$emit('close')">
+                    OK
+                  </button>
+                </slot>
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </script>
+
+
 </head>
 
 <body>
@@ -70,9 +151,62 @@
         </div>
     </div>
 
-    <div class="task_add">
-        <p>タスク追加ボタン</p>
-    </div>
+        <!-- タスクの追加 -->
+        <div id="app">
+            <button id="show-modal" @click="showModal = true">
+                タスクの追加
+            </button>
+            <!-- use the modal component, pass in the prop -->
+            <modal v-if="showModal" @close="showModal = false">
+                <!--
+                    you can use custom content here to overwrite
+                    default content
+                  -->
+                <h3 slot="header">タスクの追加</h3>
+            </modal>
+        </div>
+        
+        <script>
+            // register modal component
+            Vue.component("modal", {
+                template: "#modal-template",
+                data: function () {
+                    return {
+                        myThema: "",
+                        startSchedule: "",
+                        endSchedule: "",
+                        deadline: "",
+                        yClick: false,
+                        nClick: false,
+                        memo: "",
+                        priority: ''
+                    }
+                },
+                methods: {
+                    yesClick: function () {
+                        this.yClick = true;
+                        this.nClick = false;
+                        console.log(this.yClick);
+                        console.log(this.nClick);
+                    },
+
+                    noClick: function () {
+                        this.nClick = true;
+                        this.yClick = false;
+                        console.log(this.yClick);
+                        console.log(this.nClick);
+                    }
+                }
+            });
+
+            // start app
+            new Vue({
+                el: "#app",
+                data: {
+                    showModal: false,
+                },
+            });
+        </script>
 
 </body>
 
