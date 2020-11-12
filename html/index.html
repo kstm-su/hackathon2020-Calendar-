@@ -7,6 +7,7 @@
     <title>PC用カレンダーアプリデザイン</title>
 
     <script src="https://unpkg.com/vue"></script>
+
     <link rel="stylesheet" type="text/css" href="style.css" />
     <!-- template for the modal component -->
     <script type="text/x-template" id="modal-template" defer>
@@ -32,21 +33,21 @@
                     <div class="flex">
                         <p>日程の始まり</p>
                         <div class="input">
-                            <input v-model="startSchedule">
+                            <input v-model="startSchedule" type="date" name="today" id="today">
                         </div>
                     </div>
 
                     <div class="flex">
                         <p>日程の終わり</p>
                         <div class="input">
-                            <input v-model="endSchedule">
+                            <input v-model="endSchedule" type="date" name="today" id="today">
                         </div>
                     </div>
 
                     <div class="flex">
                         <p>期限</p>
                         <div class="input">
-                            <input v-model="deadline">
+                            <input v-model="deadline" type="date" name="today" id="today"> 
                         </div>
                     </div>
 
@@ -94,7 +95,7 @@
               <div class="modal-footer">
                 <slot name="footer">
                   <button class="modal-default-button" @click="$emit('close')">
-                    OK
+                    タスクを追加する
                   </button>
                 </slot>
               </div>
@@ -184,45 +185,7 @@
                 <h3 slot="header">タスクの追加</h3>
             </modal>
         </div>
-        
-        <script>
-            // register modal component
-            Vue.component("modal", {
-                template: "#modal-template",
-                data: function data() {
-                    return {
-                        myThema: "",
-                        startSchedule: "",
-                        endSchedule: "",
-                        deadline: "",
-                        yClick: false,
-                        nClick: false,
-                        memo: "",
-                        priority: ''
-                    }
-                },
-                methods: {
-                    yesClick: function () {
-                        this.yClick = true;
-                        this.nClick = false;
-                    },
-
-                    noClick: function () {
-                        this.nClick = true;
-                        this.yClick = false;
-                    }
-                }
-            });
-
-            // start app
-            new Vue({
-                el: "#app",
-                data: {
-                    showModal: false,
-                },
-            });
-        </script>
-
+<script src="task.add.js"></script>
 </body>
 
 </html>
