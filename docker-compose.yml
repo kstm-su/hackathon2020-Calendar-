@@ -17,6 +17,7 @@ services:
     build: ./MySQL
     volumes:
       - ./MySQL/DB:/var/lib/mysql
-    # image: original_mysql_world
     environment:
       - MYSQL_ROOT_PASSWORD=kstm
+    ports:
+      - "3306:3306"
