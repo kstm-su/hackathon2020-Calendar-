@@ -1,7 +1,7 @@
 # hackathon2020-Calendar-
 
 ## 必須手順  
-docker volume create --name=db-volume  
+docker volume create --name=mysql_data  
 
 ## docker, docker-composeによるテスト用コマンド  
 コンテナのビルド : docker-compose build  
