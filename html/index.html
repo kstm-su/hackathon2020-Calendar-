@@ -24,56 +24,75 @@
 
                     <div class="flex">
                         <p>テーマ</p>
-                        <input v-model="myThema">
+                        <div class="input">
+                            <input v-model="myThema">
+                        </div>
                     </div>
 
                     <div class="flex">
                         <p>日程の始まり</p>
-                        <input v-model="startSchedule">
+                        <div class="input">
+                            <input v-model="startSchedule">
+                        </div>
                     </div>
 
                     <div class="flex">
                         <p>日程の終わり</p>
-                        <input v-model="endSchedule">
+                        <div class="input">
+                            <input v-model="endSchedule">
+                        </div>
                     </div>
 
                     <div class="flex">
                         <p>期限</p>
-                        <input v-model="deadline">
+                        <div class="input">
+                            <input v-model="deadline">
+                        </div>
                     </div>
 
                     <div class="flex">
                         <p>繰り返し(曜日、毎週、隔週)</p>
+                        <div class="input">
+                            <input type="text">
+                        </div>
                     </div>
 
                     <div class="flex">
-                            <p>属するタスク郡</p>
+                        <p>属するタスク郡</p>
+                        <div class="input">
+                                <input type="text">
+                        </div>
                     </div>
 
                     <div class="flex">
                         <p>優先度(0~9)</p>
-                        <input v-model="priority">
+                        <div class="input">
+                            <input v-model="priority">
+                        </div>
                     </div>
 
                     <div class="flex">
                         <p>重複の許容(Yes/No)</p>
-                        <button value="yes" v-bind:disabled="yClick"
-                         v-on:click="yesClick">Yes</button><br>
+                        <div class="input">
+                            <button value="yes" v-bind:disabled="yClick"
+                            v-on:click="yesClick">Yes</button><br>
 
-                        <button value="no" v-bind:disabled="nClick"
-                        v-on:click="noClick">no</button><br>
+                            <button value="no" v-bind:disabled="nClick"
+                            v-on:click="noClick">no</button><br>
+                        </div>
                     </div>
 
                     <div class="flex">
                             <p>メモ</p>
-                            <input v-model="memo">
+                            <div class="input">
+                                <input v-model="memo">
+                            </div>
                     </div>
 
                 </slot>
               </div>
               <div class="modal-footer">
                 <slot name="footer">
-                    footer
                   <button class="modal-default-button" @click="$emit('close')">
                     OK
                   </button>
@@ -170,7 +189,7 @@
             // register modal component
             Vue.component("modal", {
                 template: "#modal-template",
-                data: function () {
+                data: function data() {
                     return {
                         myThema: "",
                         startSchedule: "",
@@ -186,15 +205,11 @@
                     yesClick: function () {
                         this.yClick = true;
                         this.nClick = false;
-                        console.log(this.yClick);
-                        console.log(this.nClick);
                     },
 
                     noClick: function () {
                         this.nClick = true;
                         this.yClick = false;
-                        console.log(this.yClick);
-                        console.log(this.nClick);
                     }
                 }
             });
