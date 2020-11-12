@@ -21,3 +21,4 @@ services:
       - MYSQL_ROOT_PASSWORD=kstm
     ports:
       - "3306:3306"
+    command: bash -c 'usermod -o -u $LINUX_MYSQL_UID mysql; groupmod -o -g $LINUX_MYSQL_GID mysql; chown -R mysql:root /var/run/mysqld/ /var/log/mysql/ /var/lib/mysql/; /entrypoint.sh mysqld --user=mysql --console'
