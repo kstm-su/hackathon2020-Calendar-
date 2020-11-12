@@ -90,12 +90,18 @@
                             </div>
                     </div>
 
+                    <div class="flex">
+                        <div class="input">
+                            <button @click="addTask">タスクを追加する</button>
+                        </div>
+                    </div>
+
                 </slot>
               </div>
               <div class="modal-footer">
                 <slot name="footer">
                   <button class="modal-default-button" @click="$emit('close')">
-                    タスクを追加する
+                    このタブを閉じる
                   </button>
                 </slot>
               </div>
@@ -182,7 +188,7 @@
                     you can use custom content here to overwrite
                     default content
                   -->
-                <h3 slot="header">タスクの追加</h3>
+                <h3 slot="header">この画面を閉じる</h3>
             </modal>
         </div>
 <script src="task.add.js"></script>

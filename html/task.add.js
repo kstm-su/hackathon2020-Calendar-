@@ -32,6 +32,11 @@ Vue.component("modal", {
             this.nClick = true;
             this.yClick = false;
         },
+
+        addTask: function () {
+            
+            
+        }
     }
 });
 
