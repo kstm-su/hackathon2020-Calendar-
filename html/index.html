@@ -3,78 +3,64 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="design.css">
     <title>PC用カレンダーアプリデザイン</title>
+    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/vue"></script>
 </head>
 
 <body>
-    <a href="upload.php">foo</a>
-    <div class="icon">
-        <img src="icon.png" width="50px" height="50px">
-    </div>
-
-    <div id="display" class="flex">
-
-        <div class="calendar_box">
-            <div class="flex" id="date">
-                <div class="month">
-                    <p>month</p>
-                </div>
-
-                <div class="week">
-                    <p>week</p>
-                </div>
-
-                <div class="day">
-                    <p>day</p>
-                </div>
-
-            </div>
-
-            <div class="flex">
-                <div class="task_filter">
-                    <p>タスク表示フィルタリング用チェックボックス</p>
-                </div>
-
-                <div class="calendar">
-                    <p>calender</p>
-                </div>
-            </div>
-
+    <div id="app">
+        <div class="icon">
+            <img src="icon.png" width="50px" height="50px">
         </div>
 
-        <div class="scroll_box">
-            <div class="task">
-                <div class="task_view">
-                    <p>タスクビュー1</p>
+        <div id="display" class="flex">
+
+            <div class="calendar_box">
+                <div class="flex" id="date">
+                    <div class="month">
+                        <p>month</p>
+                    </div>
+
+                    <div class="week">
+                        <p>week</p>
+                    </div>
+
+                    <div class="day">
+                        <p>day</p>
+                    </div>
+
                 </div>
 
-                <div class="task_view">
-                    <p>タスクビュー2</p>
-                </div>
+                <div class="flex">
+                    <div class="task_filter">
+                        <p>タスク表示フィルタリング用チェックボックス</p>
+                    </div>
 
-                <div class="task_view">
-                    <p>タスクビュー3</p>
-                </div>
-
-                <div class="task_view">
-                    <p>タスクビュー4</p>
-                </div>
-
-                <div class="task_view">
-                    <p>タスクビュー5</p>
+                    <div class="calendar">
+                        <p>calender</p>
+                    </div>
                 </div>
 
             </div>
 
+            <div class="scroll_box">
+                <div class="task">
+                    <task-view v-for="view in taskViews" v-bind:key="view.name" v-bind:view="view"></taskView>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="task_add">
+            <button id="show-modal" @click="showModal = true">タスクの追加</button>
+            <modal v-if="showModal" @close="showModal = false">
+                <h3 slot="header">タスクの追加</h3>
+            </modal>
         </div>
     </div>
 
-    <div class="task_add">
-        <iframe src="test.html"></iframe>
-    </div>
-
+    <script src="./main.js"></script>
 </body>
-
 </html>
