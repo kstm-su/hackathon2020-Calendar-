@@ -1,0 +1,156 @@
+    @charset "utf-8";
+    /***********************************************************************
+ * Reset
+ **********************************************************************/
+    /***********************************************************************
+ * Structure
+ **********************************************************************/
+    
+    html {
+        height: 100%;
+        background-color: #e5e5e5;
+    }
+    /***********************************************************************
+ * header
+ **********************************************************************/
+    /***********************************************************************
+ * h1-h6
+ **********************************************************************/
+    /***********************************************************************
+ * main
+ **********************************************************************/
+    
+    p {
+        margin: 5;
+        text-indent: 1em;
+    }
+    
+    em {
+        color: #124ac2;
+        font-weight: 700;
+    }
+    
+    .icon {
+        position: fixed;
+        z-index: 1;
+        top: 20px;
+        right: 30px;
+    }
+    
+    .scroll_box {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: auto;
+        width: 50vw;
+        height: 30vw;
+        border: 2px outset blue;
+        margin: 50px 0 0 0;
+    }
+    
+    .calendar_box {
+        width: 32vw;
+        height: 30vw;
+        border: 2px outset aqua;
+        margin: 50px;
+    }
+    
+    #date {
+        width: 75%;
+        margin: 30px auto;
+    }
+    
+    .month {
+        width: 33.3%;
+        border: 2px outset black;
+    }
+    
+    .week {
+        width: 33.3%;
+        border: 2px outset black;
+    }
+    
+    .day {
+        width: 33.3%;
+        border: 2px outset black;
+    }
+    
+    .calendar {
+        width: 60%;
+        border: 2px outset black;
+        margin: auto 5% auto 5%;
+    }
+    
+    .task_filter {
+        width: 20%;
+        border: 2px outset black;
+        margin: auto 5% auto 5%;
+    }
+    
+    .task {
+        display: flex;
+        flex-direction: row;
+        height: 60%;
+        border: 2px outset aqua;
+        margin: 20px;
+    }
+    
+    .task_view {
+        width: 300px;
+        border: 2px outset red;
+        margin: auto 30px auto 30px;
+    }
+    
+    .task_add {
+        width: 50%;
+        border: 2px outset yellowgreen;
+        margin: 30px auto;
+    }
+    
+    .document {
+        font-family: 'メイリオ', 'Meiryo', sans-serif;
+        background-color: #FAFAFA;
+        font-size: large;
+        text-align: left;
+        width: 50em;
+        margin: 2em auto;
+        padding: 2.5em;
+        line-height: 150%;
+        border-left: solid 1px #dddddd;
+        border-top: solid 1px #dddddd;
+        border-right: solid 3px #aaaaaa;
+        border-bottom: solid 3px #aaaaaa;
+        font-weight: normal;
+    }
+    
+    .flex {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .text {
+        margin-left: 1.5em;
+        width: 67%;
+    }
+    
+    .caption {
+        width: 33%;
+    }
+    
+    .line {
+        border-style: solid;
+        padding: 10px;
+        margin: 15px;
+        border-color: #00a5de;
+        margin-top: 0.8em;
+    }
+    
+    .h3p {
+        margin-left: 1em;
+    }
+    
+    @media screen and (max-width: 640px) {}
+    
+    @media screen and (min-width: 640px) and (max-width: 800px) {}
+    
+    @media screen and (min-width: 800px) and (max-width: 1000px) {}
