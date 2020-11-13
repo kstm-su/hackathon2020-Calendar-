@@ -8,3 +8,5 @@ RUN apt-get install -y nodejs
 RUN npm install npm@latest -g
 
 COPY ./php.ini /usr/local/etc/php/
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
