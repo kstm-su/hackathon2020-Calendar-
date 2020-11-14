@@ -52,6 +52,7 @@
 
         <div id="task_add">
             <button id="show-modal" @click="showModal = true">タスクの追加</button>
+            <button @click="clickEvent">タスクの更新</button><!--テスト用-->
             <modal v-if="showModal" @close="showModal = false">
                 <h3 slot="header">タスクの追加</h3>
             </modal>
@@ -59,7 +60,9 @@
     </div>
     <button v-on:click="clickEvent">JSONデータの読み込み</button>
 </div>
-    <script src="./main.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./main.js"></script>
 </body>
 
 </html>
