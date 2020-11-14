@@ -374,7 +374,6 @@ new Vue({
                 ]
             },
         ],
-        cpu: [],
   },
   methods: {
       clickEvent: function () {//押せばタスクがソートされる(テスト用)
