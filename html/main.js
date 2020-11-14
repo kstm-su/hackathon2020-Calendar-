@@ -51,9 +51,6 @@ Vue.component("modal", {
         yesClick: function () {
             this.yClick = true;
             this.nClick = false;
-            console.log(this.name);
-            console.log(this.startDay);
-            console.log(this.startTime);
         },
 
         noClick: function () {
