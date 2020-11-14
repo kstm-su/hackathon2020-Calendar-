@@ -1,5 +1,8 @@
 <?php
 
+$json = file_get_contents("php://input");
+$data = json_decode($json, true);
+echo json_encode(['name' => $data["tasks"][0]["name"]]);
 //echo <<<_END
 //<html>
 //  <head>
@@ -16,20 +19,20 @@
 //_END;
 
 
- require_once 'login.php';
- try{
-   $pdo = new PDO($db_host,$db_username,$db_password);
-   $sql = "select * from city;";
-   $res = $pdo->query($sql);
-   // echo "$value";
-   foreach( $res as $value ) {
-     echo "$value[Name]<br>";
-   }
- } catch (PDOException $e) {
-   exit('データベースに接続できませんでした。' . $e->getMessage());
-   die();
- }
- $pdo = null;
+ // require_once 'login.php';
+ // try{
+ //   $pdo = new PDO($db_host,$db_username,$db_password);
+ //   $sql = "select * from city;";
+ //   $res = $pdo->query($sql);
+ //   // echo "$value";
+ //   foreach( $res as $value ) {
+ //     echo "$value[Name]<br>";
+ //   }
+ // } catch (PDOException $e) {
+ //   exit('データベースに接続できませんでした。' . $e->getMessage());
+ //   die();
+ // }
+ // $pdo = null;
 
 // echo <<<_END
 // <html><head>
