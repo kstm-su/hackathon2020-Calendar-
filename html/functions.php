@@ -1,6 +1,6 @@
 <?php
 
-require_once 'login1.php'
+require_once 'login1.php';
 
 function connectDb() {
     try{
@@ -12,9 +12,24 @@ function connectDb() {
 
 }
 
+function gen_teamid() {
+    $jsonurl = 'words.json';
+    $json = file_get_contents($jsonurl);
+    $words = json_decode($json, true);
+    $keys = array_rand($words, 3);
+    shuffle($keys);
+    $teamid = "";
+    
+    foreach($keys as $key){
+        $teamid = $teamid.'-'.$words[$key];
+    }
+    
+    $teamid = preg_replace('/-/0', '', $teamid);
+    return $teamid;
+}
 
-
-
+$test = gen_teamid();
+echo $test;
 
 
 
