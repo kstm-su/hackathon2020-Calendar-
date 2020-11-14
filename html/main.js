@@ -1,4 +1,4 @@
-function initCalendar () {
+function initCalendar (data) {
     //本日、カレンダーの開始日、終了日と、曜日のテキストを用意します
     let date_now = new Date();
     let date_start = new Date(date_now.getFullYear(), date_now.getMonth(), 1);
@@ -386,6 +386,6 @@ new Vue({
       }
   },
   created:function(){
-    initCalendar()
+    initCalendar(this.taskViews)
   }
 })

@@ -11,42 +11,42 @@ function query(type, data){
 
 function registerUser() {
   let data = query('newUser', {userid:'change!', name:'change!'})
-
+  return data
 }
 
 function loginUser(){
   let data = query('loginUser', {userid:'change!', name:'change!'})
-
+  return data
 }
 
 function resisterTeam(){
   let data = query('newTeam', {userid:'change!', name:'change!'})
-
+  return data
 }
 
 function registerEvent(){
   let data = query('newEvent', {userid:'change!', name:'change!'})
-
+  return data
 }
 
 function joinTeam(){
   let data = query('joinTeam', {userid:'change!', name:'change!'})
-
+  return data
 }
 
 function leaveTeam(){
   let data = query('leaveTeam', {userid:'change!', name:'change!'})
-
+  return data
 }
 
 function deleteTeam(){
   let data = query('deleteTeam', {userid:'change!', name:'change!'})
-
+  return data
 }
 
 function deleteUser(){
   let data = query('deleteUser', {userid:'change!', name:'change!'})
-
+  return data
 }
 
 // new_user
