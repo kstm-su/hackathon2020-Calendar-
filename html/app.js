@@ -38,25 +38,25 @@ function registerEvent(data){
   return ret
 }
 
-function joinTeam(){
+function joinTeam(data){
   // {userid:'a', teamid:'', teamname:'', ismyself:'', color:''}
-  let data = query('joinTeam', {userid:'change!', name:'change!'})
+  let ret = query('joinTeam', {userid:'change!', name:'change!'})
   // {userid:'a', teamid:''or 'null', teamname:'', ismyself:'', color:''}
-  return data
+  return ret
 }
 
-function leaveTeam(){
+function leaveTeam(data){
   // {userid:'a', teamid:'', teamname:'', ismyself:'', color:''}
-  let data = query('leaveTeam', {userid:'change!', name:'change!'})
+  let ret = query('leaveTeam', {userid:'change!', name:'change!'})
   // {userid:'a', teamid:'' or 'null', teamname:'', ismyself:'', color:''}
-  return data
+  return ret
 }
 
-function deleteUser(){
+function deleteUser(data){
   //{userid:'a'}
-  let data = query('deleteUser', {userid:'change!', name:'change!'})
+  let ret = query('deleteUser', {userid:'change!', name:'change!'})
   //{userid:'a'}
-  return data
+  return ret
 }
 
 // new_user
