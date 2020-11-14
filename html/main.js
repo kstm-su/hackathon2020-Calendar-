@@ -251,7 +251,7 @@ new Vue({
           let t;
           for (let n = 0; n < this.taskViews.length; n++) {
               t = sortend(this.taskViews[n].tasks);  
-              this.taskViews[n] = t;
+              this.taskViews[n].tasks = t;
               console.log(t);
           }
 
