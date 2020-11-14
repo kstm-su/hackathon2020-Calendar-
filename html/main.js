@@ -256,48 +256,15 @@ new Vue({
         ],
         cpu: [],
     },
-    methods: {
-      clickEvent: function() {
-        let params = new URLSearchParams()
-        let tmp_data = {name:'team9', tasks: [{ name: 'study' }]}
-        let t_data = JSON.stringify(tmp_data);
-        console.log(t_data);
-        params.append('input_val', tmp_data)
-        axios.post('./upload.php', t_data).then(function(response) {
-            console.log(response.data)
-            this.cpu.push(response.data.name)
-            console.log(response.data.name)
-        }.bind(this)).catch(function(e) {
-            console.error(e)
-        })
-  //   },
-  // methods: {
-  //     clickEvent: function () {
-  //         let n;
-  //         let t;
-  //         for (let n = 0; n < this.taskViews.length; n++) {
-  //             t = sortend(this.taskViews[n].tasks);
-  //             this.taskViews[n].tasks = t;
-  //             console.log(t);
-  //         }
-  //
-  //       /*let n;
-  //       let task;//受け取ったjsonのデータを格納
-  //       axios
-  //           .get('json/test.json')//2020/11-14/1326時点でエラー
-  //           .then(function (response) {
-  //               this.taskViews = response.data;//一旦、受け取ったデータを反映する.テストが終わったらこの1行は破棄する.
-  //               let task = this.taskViews;
-  //               //ここでn番目のチームごとにソートする
-  //               for (let n = 0; n < task.length; i++) {
-  //                   sortendTime(n, task);
-  //                   sortPriority(n, task);
-  //               }
-  //           this.taskViews = task;//ソートしたものを反映する
-  //           }
-  //           .bind(this)).catch(function (error) {
-  //               console.error('取得に失敗しました', error);
-  //           // }*/
+  methods: {
+      clickEvent: function () {
+          let n;
+          let t;
+          for (let n = 0; n < this.taskViews.length; n++) {
+              t = sortend(this.taskViews[n].tasks);
+              this.taskViews[n].tasks = t;
+              console.log(t);
+          }
     }
   }
 })
