@@ -71,7 +71,7 @@ function team_json($teamid) {
         );
     }
     return $result;
-
+}
 
 
 
