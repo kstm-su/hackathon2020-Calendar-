@@ -110,7 +110,7 @@ p {
 #scroll_box {
     grid-column: 3/5;
     grid-row: 2/3;
-    overflow-x: scroll;
+    overflow: auto;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -122,8 +122,11 @@ p {
 .task_view {
     display: flex;
     flex-direction: column;
-    width: 500px;
-    height: 95%;
+    overflow-y: auto;
+    min-width: 300px;
+    min-height: 95%;
+    max-height: 95%;
+    height: auto;
     border: 2px outset red;
     margin: auto 10px;
 }

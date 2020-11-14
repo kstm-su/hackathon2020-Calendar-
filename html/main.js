@@ -1,24 +1,23 @@
-
-Vue.component("task",{
-  props: ['task'],
-  template: `
+Vue.component("task", {
+    props: ['task'],
+    template: `
     <div class="task">
         <p>{{task.name}}</p>
     </div>
   `
 })
 
-Vue.component("task-view",{ //コンポーネントの命名はケバブケースで
-  props: ['view'],
-  // data: function(){
-  //   return{
-  //     tasks: []
-  //   }
-  // },
-  methods: {
-    addTask: function(){}
-  },
-  template: `
+Vue.component("task-view", { //コンポーネントの命名はケバブケースで
+    props: ['view'],
+    // data: function(){
+    //   return{
+    //     tasks: []
+    //   }
+    // },
+    methods: {
+        addTask: function() {}
+    },
+    template: `
     <div class="task_view">
         <div class="task_name">
         <p>{{view.name}}</p>
