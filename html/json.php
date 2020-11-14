@@ -37,7 +37,7 @@ function event_json($credential) {
 function teams_json($credential) {
     $dbh = connectDb();
     
-    $sth = $dbh->prepare("SELECT teamid teamname ismyself FROM Teams WHERE teamid IN (SELECT teamid FROM User WHERE userid=:id)");
+    $sth = $dbh->prepare("SELECT teamid teamname ismyself FROM Teams WHERE teamid IN (SELECT teamid FROM User WHERE userid=:id);");
     $sth->bindValue(':id', $credential, PDO::PARAM_STR);
     //to prevent SQLinjection attack
     $sth->execute();
@@ -57,7 +57,7 @@ function teams_json($credential) {
 function team_json($teamid) {
     $dbh = connectDb();
     
-    $sth = $dbh->prepare("SELECT teamid teamname ismyself FROM Teams WHERE teamid=:id");
+    $sth = $dbh->prepare("SELECT teamid teamname ismyself FROM Teams WHERE teamid=:id;");
     $sth->bindValue(':id', $teamid, PDO::PARAM_STR);
     //to prevent SQLinjection attack
     $sth->execute();
