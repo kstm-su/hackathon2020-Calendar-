@@ -1,6 +1,7 @@
 <?php
 
 require_once 'login1.php';
+require_once 'gen_uuid.php';
 
 function connectDb() {
     try{
@@ -57,6 +58,82 @@ function add_team($teamname, $ismyself, $credential) {
     
     return 0;
     
+}
+
+function leave_team($teamid ,$credential){
+    $dbh = connectDb();
+    $sth = $dbh->prepare("DELETE FROM Users WHERE userid=:id AND teamid=:teamid);");
+    $sth->bindValue(':id', $credential, PDO::PARAM_STR);
+    $sth->bindValue(':teamid', $teamid, PDO::PARAM_STR);
+    $sth->execute();
+    
+    return 0;
+}
+
+
+function update_team($teamid, $teamname, $color) {
+    $dbh = connectDb();
+    $sth = $dbh->prepare("UPDATE FROM Teams SET teamname=:teamname, color=:color WHERE teamid=:teamid;");
+    $sth->bindValue(':teamid', $teamid, PDO::PARAM_STR);
+    $sth->bindValue(':teamname', $teamname, PDO::PARAM_STR);
+    $sth->bindValue(':color', $color, PDO::PARAM_STR);
+    $sth->execute();
+    
+    return 0;
+}
+
+
+
+
+function add_event($teamid, $eventname, $starttime, $endtime, $priority, $memo, $istodo, $istimetable){
+    $eventid = uuidv4::generate();
+    $dbh = connectDb();
+    $sth = $dbh->prepare("INCERT INTO Events (teamid, eventid, eventname, starttime, endtime, priority, memo, istodo, istimetable) VALUES (:teamid, :eventid, :eventname, :starttime, :endtime, :priority, :memo, :istodo, :istimetable);");
+
+    $sth->bindValue(':teamid', $teamid, PDO::PARAM_STR);
+    $sth->bindValue(':eventid', $eventid, PDO::PARAM_STR);
+    $sth->bindValue(':eventname', $eventname, PDO::PARAM_STR);
+    $sth->bindValue(':starttime', $starttime, PDO::PARAM_STR);
+    $sth->bindValue(':endtime', $endtime, PDO::PARAM_STR);
+    $sth->bindValue(':priority', $priority, PDO::PARAM_INT);
+    $sth->bindValue(':memo', $memo, PDO::PARAM_STR);
+    $sth->bindValue(':istodo', $istodo, PDO::PARAM_INT);
+    $sth->bindValue(':istimetable', $istimetable, PDO::PARAM_INT);
+    $sth->execute();
+    
+    return 0;
+}
+
+function del_event($eventid){
+    $dbh = connectDb();
+    $sth = $dbh->prepare("DELETE FROM Events WHERE eventid=:eventid;");
+    $sth->bindValue(':eventid', $eventid, PDO::PARAM_STR);
+    $sth->execute();
+    
+    return 0;
+}
+
+function update_event($eventid, $eventname, $starttime, $endtime, $priority, $memo, $istodo, $istimetable){
+    
+    $dbh = connectDb();
+    $sth = $dbh->prepare("UPDATE Events SET eventname=:eventname, starttime=:starttime, endtime=:endtime, priority=:priority, memo=:memo, istodo=:istodo, istimetable=:istimetable WHERE eventid=:eventid;"); 
+    $sth->bindValue(':eventid', $eventid, PDO::PARAM_STR);
+    $sth->bindValue(':eventname', $eventname, PDO::PARAM_STR);
+    $sth->bindValue(':starttime', $starttime, PDO::PARAM_STR);
+    $sth->bindValue(':endtime', $endtime, PDO::PARAM_STR);
+    $sth->bindValue(':priority', $priority, PDO::PARAM_INT);
+    $sth->bindValue(':memo', $memo, PDO::PARAM_STR);
+    $sth->bindValue(':istodo', $istodo, PDO::PARAM_INT);
+    $sth->bindValue(':istimetable', $istimetable, PDO::PARAM_INT);
+    $sth->execute();
+    
+    return 0;
+}
+
+function del_user($credential){
+    $dbh = connectDb(); 
+    $sth = $dbh->prepare("SELECT * FROM Users WHERE");
+
 }
 
 
