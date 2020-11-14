@@ -255,6 +255,7 @@ new Vue({
               this.taskViews[n] = t;
               console.log(t);
           }
+
         /*let n;
         let task;//受け取ったjsonのデータを格納
         axios
