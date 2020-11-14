@@ -10,42 +10,42 @@ function query(type, data){
 
 
 function registerUser() {
-  let data = query('newUser', usesrData:{userid:'change!', name:'change!'})
-  
+  let data = query('newUser', {userid:'change!', name:'change!'})
+
 }
 
 function loginUser(){
-  let data = query('loginUser', usesrData:{userid:'change!', name:'change!'})
+  let data = query('loginUser', {userid:'change!', name:'change!'})
 
 }
 
 function resisterTeam(){
-  let data = query('newTeam', usesrData:{userid:'change!', name:'change!'})
+  let data = query('newTeam', {userid:'change!', name:'change!'})
 
 }
 
 function registerEvent(){
-  let data = query('newEvent', usesrData:{userid:'change!', name:'change!'})
+  let data = query('newEvent', {userid:'change!', name:'change!'})
 
 }
 
 function joinTeam(){
-  let data = query('joinTeam', usesrData:{userid:'change!', name:'change!'})
+  let data = query('joinTeam', {userid:'change!', name:'change!'})
 
 }
 
 function leaveTeam(){
-  let data = query('leaveTeam', usesrData:{userid:'change!', name:'change!'})
+  let data = query('leaveTeam', {userid:'change!', name:'change!'})
 
 }
 
 function deleteTeam(){
-  let data = query('deleteTeam', usesrData:{userid:'change!', name:'change!'})
+  let data = query('deleteTeam', {userid:'change!', name:'change!'})
 
 }
 
 function deleteUser(){
-  let data = query('deleteUser', usesrData:{userid:'change!', name:'change!'})
+  let data = query('deleteUser', {userid:'change!', name:'change!'})
 
 }
 
