@@ -1,8 +1,8 @@
 <?php
 
-header('Content-Type: application/json; charset=utf-8');
-echo json_encode(['name' => $_POST['input_val']]);
-
+$json = file_get_contents("php://input");
+$data = json_decode($json, true);
+echo json_encode(['name' => $data["tasks"][0]["name"]]);
 //echo <<<_END
 //<html>
 //  <head>

@@ -3,6 +3,12 @@
 ## 必須手順  
 docker volume create --name=mysql_data  
 
+docker exec -it mysql bash -p
+mysql -u root -p
+use mysql;
+alter user 'root'@'%' identified with mysql_native_password by 'kstm';
+select user, host, plugin from user;
+
 ## docker, docker-composeによるテスト用コマンド  
 コンテナのビルド : docker-compose build  
 コンテナの起動 : docker-compose up -d  
