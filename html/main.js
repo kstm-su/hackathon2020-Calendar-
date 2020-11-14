@@ -57,7 +57,7 @@ Vue.component("modal", {
       this.yClick = false;
       console.log(this.yClick);
       console.log(this.nClick);
-    }
+    },
   },
   template: `
     <transition name="modal" id="modal-template">
@@ -203,6 +203,21 @@ new Vue({
           {name:'study'}
         ]
       },
-    ]
+    ],
+    cpu: [],
   },
+  methods: {
+    clickEvent: function() {
+      let params = new URLSearchParams()
+      let tmp_data = {name:'team9', tasks:[{name:'study'}]}
+      params.append('input_val', tmp_data.name)
+      axios.post('./upload.php', params).then(function(response) {
+          console.log(response)
+          this.cpu.push(response.name)
+          console.log(response.name)
+      }.bind(this)).catch(function(e) {
+          console.error(e)
+      })
+    }
+  }
 })
