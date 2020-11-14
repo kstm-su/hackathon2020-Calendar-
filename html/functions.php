@@ -104,6 +104,38 @@ function add_event($teamid, $eventname, $starttime, $endtime, $priority, $memo, 
     return 0;
 }
 
+function del_event($eventid){
+    $dbh = connectDb();
+    $sth = $dbh->prepare("DELETE FROM Events WHERE eventid=:eventid;");
+    $sth->bindValue(':eventid', $eventid, PDO::PARAM_STR);
+    $sth->execute();
+    
+    return 0;
+}
+
+function update_event($eventid, $eventname, $starttime, $endtime, $priority, $memo, $istodo, $istimetable){
+    
+    $dbh = connectDb();
+    $sth = $dbh->prepare("UPDATE Events SET eventname=:eventname, starttime=:starttime, endtime=:endtime, priority=:priority, memo=:memo, istodo=:istodo, istimetable=:istimetable WHERE eventid=:eventid;"); 
+    $sth->bindValue(':eventid', $eventid, PDO::PARAM_STR);
+    $sth->bindValue(':eventname', $eventname, PDO::PARAM_STR);
+    $sth->bindValue(':starttime', $starttime, PDO::PARAM_STR);
+    $sth->bindValue(':endtime', $endtime, PDO::PARAM_STR);
+    $sth->bindValue(':priority', $priority, PDO::PARAM_INT);
+    $sth->bindValue(':memo', $memo, PDO::PARAM_STR);
+    $sth->bindValue(':istodo', $istodo, PDO::PARAM_INT);
+    $sth->bindValue(':istimetable', $istimetable, PDO::PARAM_INT);
+    $sth->execute();
+    
+    return 0;
+}
+
+function del_user($credential){
+    $dbh = connectDb(); 
+    $sth = $dbh->prepare("SELECT * FROM Users WHERE");
+
+}
+
 
 
 
