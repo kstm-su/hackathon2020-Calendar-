@@ -1,6 +1,7 @@
 <?php
 
 require_once 'login1.php';
+require_once 'gen_uuid.php';
 
 function connectDb() {
     try{
@@ -81,11 +82,26 @@ function update_team($teamid, $teamname, $color) {
     return 0;
 }
 
-function add_event(){
 
 
 
+function add_event($teamid, $eventname, $starttime, $endtime, $priority, $memo, $istodo, $istimetable){
+    $eventid = uuidv4::generate();
+    $dbh = connectDb();
+    $sth = $dbh->prepare("INCERT INTO Events (teamid, eventid, eventname, starttime, endtime, priority, memo, istodo, istimetable) VALUES (:teamid, :eventid, :eventname, :starttime, :endtime, :priority, :memo, :istodo, :istimetable);");
 
+    $sth->bindValue(':teamid', $teamid, PDO::PARAM_STR);
+    $sth->bindValue(':eventid', $eventid, PDO::PARAM_STR);
+    $sth->bindValue(':eventname', $eventname, PDO::PARAM_STR);
+    $sth->bindValue(':starttime', $starttime, PDO::PARAM_STR);
+    $sth->bindValue(':endtime', $endtime, PDO::PARAM_STR);
+    $sth->bindValue(':priority', $priority, PDO::PARAM_INT);
+    $sth->bindValue(':memo', $memo, PDO::PARAM_STR);
+    $sth->bindValue(':istodo', $istodo, PDO::PARAM_INT);
+    $sth->bindValue(':istimetable', $istimetable, PDO::PARAM_INT);
+    $sth->execute();
+    
+    return 0;
 }
 
 
