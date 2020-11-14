@@ -2,6 +2,7 @@
 function query(type, data){
   let tmp_data = {type: type, data: data}
   axios.post('./upload.php', JSON.stringify(tmp_data)).then(function(response) {
+    console.log(response.status)
     return response.data
   }.bind(this)).catch(function(e) {
     console.error(e)
