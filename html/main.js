@@ -1,24 +1,23 @@
-
-Vue.component("task",{
-  props: ['task'],
-  template: `
+Vue.component("task", {
+    props: ['task'],
+    template: `
     <div class="task">
         <p>{{task.name}}</p>
     </div>
   `
 })
 
-Vue.component("task-view",{ //コンポーネントの命名はケバブケースで
-  props: ['view'],
-  // data: function(){
-  //   return{
-  //     tasks: []
-  //   }
-  // },
-  methods: {
-    addTask: function(){}
-  },
-  template: `
+Vue.component("task-view", { //コンポーネントの命名はケバブケースで
+    props: ['view'],
+    // data: function(){
+    //   return{
+    //     tasks: []
+    //   }
+    // },
+    methods: {
+        addTask: function() {}
+    },
+    template: `
     <div class="task_view">
         <div class="task_name">
         <p>{{view.name}}</p>
@@ -32,34 +31,34 @@ Vue.component("task-view",{ //コンポーネントの命名はケバブケー�
 
 // register modal component
 Vue.component("modal", {
-  data: function () {
-    return {
-      myThema:"",
-      startSchedule:"",
-      endSchedule:"",
-      deadline:"",
-      yClick: false,
-      nClick: false,
-      memo:"",
-      priority: ''
-    }
-  },
-  methods: {
-    yesClick: function(){
-      this.yClick = true;
-      this.nClick = false;
-      console.log(this.yClick);
-      console.log(this.nClick);
+    data: function() {
+        return {
+            myThema: "",
+            startSchedule: "",
+            endSchedule: "",
+            deadline: "",
+            yClick: false,
+            nClick: false,
+            memo: "",
+            priority: ''
+        }
     },
+    methods: {
+        yesClick: function() {
+            this.yClick = true;
+            this.nClick = false;
+            console.log(this.yClick);
+            console.log(this.nClick);
+        },
 
-    noClick: function(){
-      this.nClick = true;
-      this.yClick = false;
-      console.log(this.yClick);
-      console.log(this.nClick);
-    }
-  },
-  template: `
+        noClick: function() {
+            this.nClick = true;
+            this.yClick = false;
+            console.log(this.yClick);
+            console.log(this.nClick);
+        }
+    },
+    template: `
     <transition name="modal" id="modal-template">
       <div class="modal-mask">
         <div class="modal-wrapper">
@@ -138,71 +137,79 @@ Vue.component("modal", {
 
 // start app
 new Vue({
-  el: "#app",
-  data: {
-    showModal: false,
-    taskViews: [
-      {
-        name: 'me',
-        tasks:[
-          {name:'study'},
-          {name:'hard study'}
+    el: "#app",
+    data: {
+        showModal: false,
+        taskViews: [{
+                name: 'me',
+                tasks: [
+                    { name: 'study' },
+                    { name: 'hard study' },
+                    { name: 'hard study' },
+                    { name: 'hard study' },
+                    { name: 'hard study' },
+                    { name: 'hard study' },
+                    { name: 'hard study' },
+                    { name: 'hard study' },
+                    { name: 'hard study' },
+                    { name: 'hard study' },
+                    { name: 'hard study' }
+                ]
+            },
+            {
+                name: 'team1',
+                tasks: [
+                    { name: 'study' }
+                ]
+            },
+            {
+                name: 'team2',
+                tasks: [
+                    { name: 'study' }
+                ]
+            },
+            {
+                name: 'team3',
+                tasks: [
+                    { name: 'study' }
+                ]
+            },
+            {
+                name: 'team4',
+                tasks: [
+                    { name: 'study' }
+                ]
+            },
+            {
+                name: 'team5',
+                tasks: [
+                    { name: 'study' }
+                ]
+            },
+            {
+                name: 'team6',
+                tasks: [
+                    { name: 'study' }
+                ]
+            },
+            {
+                name: 'team7',
+                tasks: [
+                    { name: 'study' }
+                ]
+            },
+            {
+                name: 'team8',
+                tasks: [
+                    { name: 'study' }
+                ]
+            },
+            {
+                name: 'team9',
+                tasks: [
+                    { name: 'study' }
+                ]
+            },
         ]
-      },
-      {
-        name: 'team1',
-        tasks:[
-          {name:'study'}
-        ]
-      },
-      {
-        name: 'team2',
-        tasks:[
-          {name:'study'}
-        ]
-      },
-      {
-        name: 'team3',
-        tasks:[
-          {name:'study'}
-        ]
-      },
-      {
-        name: 'team4',
-        tasks:[
-          {name:'study'}
-        ]
-      },
-      {
-        name: 'team5',
-        tasks:[
-          {name:'study'}
-        ]
-      },
-      {
-        name: 'team6',
-        tasks:[
-          {name:'study'}
-        ]
-      },
-      {
-        name: 'team7',
-        tasks:[
-          {name:'study'}
-        ]
-      },
-      {
-        name: 'team8',
-        tasks:[
-          {name:'study'}
-        ]
-      },
-      {
-        name: 'team9',
-        tasks:[
-          {name:'study'}
-        ]
-      },
-    ]
-  },
+    },
 })
