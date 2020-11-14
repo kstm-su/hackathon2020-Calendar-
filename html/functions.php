@@ -131,9 +131,34 @@ function update_event($eventid, $eventname, $starttime, $endtime, $priority, $me
 }
 
 function del_user($credential){
-    $dbh = connectDb(); 
-    $sth = $dbh->prepare("SELECT * FROM Users WHERE");
-
+    $dbh = connectDb();
+    
+    $teamid_delete = $dbh->prepare("SELECT teamid FROM Teams WHERE teamid IN (SELECT teamid FROM Users WHERE userid=:id) AND ismyself='1';");
+    $teamid_delete->bindValue(':id', $credential, PDO::PARAM_STR);
+    $teamid_delete->execute();
+    
+    
+    $sth = $dbh->prepare("DELETE FROM Events WHERE teamid=:teamid_delete;");
+    $sth->bindValue(':id', $credential, PDO::PARAM_STR);
+    $sth->bindValue(':teamid_delete', $teamid_delete, PDO::PARAM_STR);
+    $sth->execute();
+    
+    $sth = $dbh->prepare("DELETE FROM Teams WHERE teamid=:teamid_delete;");
+    $sth->bindValue(':id', $credential, PDO::PARAM_STR);
+    $sth->bindValue(':teamid_delete', $teamid_delete, PDO::PARAM_STR);
+    $sth->execute();
+    
+    $sth = $dbh->prepare("DELETE FROM Users WHERE userid=:id;");
+    $sth->bindValue(':id', $credential, PDO::PARAM_STR);
+    $sth->execute();
+    
+    $sth = $dbh->prepare("DELETE FROM Events WHERE teamid IN (SELECT teamid FROM Teams WHERE teamid NOT EXISTS (SELECT teamid FROM Users));");
+    $sth->execute();
+    
+    $sth = $dbh->prepare("DELETE FROM Teams WHERE teamid NOT EXISTS (SELECT teamid FROM Users);");
+    $sth->execute();
+     
+    return 0;
 }
 
 
