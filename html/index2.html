@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
+    
+    <!--main.jsのtask-filter用のcss-->
+    <style>
+        .active {
+          color: rgb(28, 24, 255);
+        }
+    </style>
  
 
     <title>PC用カレンダーアプリデザイン</title>
@@ -37,6 +44,7 @@
 
                 <div id="task_filter">
                     <p>タスク表示フィルタリング用チェックボックス</p>
+                        <task-filter v-for="view in taskViews" v-bind:key="view.name" v-bind:filter="view" ></task-filter>
                 </div>
                 
                 <div id="calendar">
@@ -49,7 +57,12 @@
 
             <div id="icon_box">
                 <p>アイコンボックス</p>
-                <img id="icon" src="icon.png">
+                <button type="submit" id="show-Iconbox" @click="showIconbox = true">
+                    <img src = "icon.png" alt="アイコン" id="icon">
+                </button>
+                <iconbox v-if="showIconbox" @close="showIconbox = false">
+                    <p>アイコンボックス</p>
+                </iconbox>
             </div>
 
             <div id="scroll_box">

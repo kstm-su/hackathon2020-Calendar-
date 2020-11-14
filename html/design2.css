@@ -104,7 +104,7 @@ p {
     grid-column: 2/3;
     grid-row: 2/3;
     width: auto;
-    height: 100%;
+    min-height: 100%;
 }
 
 #scroll_box {

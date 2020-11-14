@@ -1,3 +1,23 @@
+Vue.component("task-filter", {
+    props: ['filter'],
+    data: function () {
+        return {
+            isActive: true,
+        }
+    },
+    methods: {
+        filterClick: function () {
+            this.isActive = !(this.isActive); //反転
+        }
+        
+    },
+    template: `
+    <button v-bind:class="{ active: isActive }" @click="filterClick">
+        {{filter.name}}
+    </button>
+  `
+})
+
 Vue.component("task-calendar", {
     props: ['tasks'],
     created: function () {
@@ -66,9 +86,46 @@ Vue.component("task-calendar", {
         <div id="calendar"></div>       
     `
 })
+Vue.component("iconbox", {
+    data: function () {
+        return {
+            name: "",
+        }
+    },
+    methods: {
+    },
+    template: `
+    <transition name="iconbox" id="iconbox-template">
+      <div class="modal-mask">
+        <div class="modal-wrapper">
+          <div class="modal-container">
 
+            <div class="modal-header">
+              <slot name="header">
+              </slot>
+            </div>
+            <div class="modal-body">
+              <slot name="body">
 
-
+                  <div class="flex">
+                      <p>テーマ</p>
+                      <input v-model="name">
+                  </div>
+              </slot>
+            </div>
+            <div class="modal-footer">
+              <slot name="footer">
+                <button class="modal-default-button" @click="$emit('close')">
+                  OK
+                </button>
+              </slot>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+  `,
+})
 
 Vue.component("task", {
     props: ['task'],
@@ -195,7 +252,6 @@ Vue.component("modal", {
             </div>
             <div class="modal-footer">
               <slot name="footer">
-                default footer
                 <button class="modal-default-button" @click="$emit('close')">
                   OK
                 </button>
@@ -225,6 +281,7 @@ function sortend(task) {
 new Vue({
     el: "#app",
     data: {
+        showIconbox: false,
         showModal: false,
         taskViews: [
             {
