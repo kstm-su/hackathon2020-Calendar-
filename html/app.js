@@ -26,35 +26,42 @@ function loginUser(data){
 
 function resisterTeam(data){
   //{userid:'a', teamid:'c'}
-  let ret = query('newTeam', {userid:'change!', name:'change!'})
+  let ret = query('newTeam', data)
   //{userid:'a', teamid:'c'}
   return ret
 }
 
 function registerEvent(data){
-  //{teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
-  let ret = query('newEvent', {userid:'change!', name:'change!'})
-  //{teamid:"kstm", eventid:, eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
+  //{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
+  let ret = query('newEvent', data)
+  //{teamid:"kstm", eventid:'some' or 'null', eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
+  return ret
+}
+
+function deleteEvent(data){
+  //{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
+  let ret = query('deleteteEvent', data)
+  //{teamid:"kstm", eventid:'some' or 'null', eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
   return ret
 }
 
 function joinTeam(data){
   // {userid:'a', teamid:'', teamname:'', ismyself:'', color:''}
-  let ret = query('joinTeam', {userid:'change!', name:'change!'})
+  let ret = query('joinTeam', data)
   // {userid:'a', teamid:''or 'null', teamname:'', ismyself:'', color:''}
   return ret
 }
 
 function leaveTeam(data){
   // {userid:'a', teamid:'', teamname:'', ismyself:'', color:''}
-  let ret = query('leaveTeam', {userid:'change!', name:'change!'})
+  let ret = query('leaveTeam', data)
   // {userid:'a', teamid:'' or 'null', teamname:'', ismyself:'', color:''}
   return ret
 }
 
 function deleteUser(data){
   //{userid:'a'}
-  let ret = query('deleteUser', {userid:'change!', name:'change!'})
+  let ret = query('deleteUser', data)
   //{userid:'a'}
   return ret
 }

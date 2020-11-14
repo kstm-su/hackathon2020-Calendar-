@@ -8,25 +8,33 @@ $response = "";
 $querydata = $data["data"];
 
 switch($data["type"]){
-  case 'newUser':
+  case 'newUser': //{userid:'a'}
+    break;
 
+  case 'loginUser'://{userid:'a'}
+    $response = event_json($querydata["userid"]);
     break;
-  case 'loginUser':
+
+  case 'newTeam'://{userid:'a', teamid:'c'}
     break;
-  case 'newTeam':
+
+  case 'newEvent'://{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
+    $response = event_json($querydata["userid"]);
     break;
-  case 'newEvent':
+
+  case 'deleteEvent'://{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
     break;
-  case 'joinTeam':
+
+  case 'joinTeam':// {userid:'a', teamid:'', teamname:'', ismyself:'', color:''}
     break;
-  case 'leaveTeam':
+
+  case 'leaveTeam':// {userid:'a', teamid:'', teamname:'', ismyself:'', color:''}
     break;
-  case 'deleteTeam':
-    break;
-  case 'deleteUser':
+
+  case 'deleteUser'://{userid:'a'}
     break;
 }
 
-echo $response;
+echo json_encode($response,JSON_UNESCAPED_UNICODE);;
 
 ?>
