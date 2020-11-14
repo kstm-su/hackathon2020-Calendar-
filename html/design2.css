@@ -1,164 +1,401 @@
-@charset "utf-8";
-
-/***********************************************************************
+    @charset "utf-8";
+    /***********************************************************************
 * Reset
 **********************************************************************/
-
-
-/***********************************************************************
+    /***********************************************************************
 * Structure
 **********************************************************************/
-
-html {
-    height: 100%;
-    background-color: #e5e5e5;
-}
-
-
-/***********************************************************************
+    
+    html {
+        height: 100%;
+        background-color: #e5e5e5;
+        font-size: 16px;
+    }
+    /***********************************************************************
 * header
 **********************************************************************/
-
-
-/***********************************************************************
+    /***********************************************************************
 * h1-h6
 **********************************************************************/
-
-
-/***********************************************************************
-* main
+    /***********************************************************************
+* main PC display
 **********************************************************************/
-
-p {
-    margin: 5;
-    text-indent: 1em;
-}
-
-#display {
-    display: grid;
-    grid-template-columns: 30% 12% 28% 30%;
-    grid-template-rows: 11% 65% 24%;
-    width: 98vw;
-    height: 98vh;
-}
-
-#calendar_box {
-    display: grid;
-    grid-template-columns: 26% 74%;
-    grid-template-rows: 15% 85%;
-    grid-column: 1/3;
-    grid-row: 1/3;
-    border: 2px outset aqua;
-    width: 93%;
-    height: 93%;
-    margin: auto;
-}
-
-#date {
-    grid-column: 1/3;
-    width: 75%;
-    height: 60%;
-    margin: 30px auto;
-}
-
-#month {
-    width: 33.3%;
-    border: 2px outset black;
-}
-
-#week {
-    width: 33.3%;
-    border: 2px outset black;
-}
-
-#day {
-    width: 33.3%;
-    border: 2px outset black;
-}
-
-#task_filter {
-    width: 72%;
-    height: 86%;
-    border: 2px outset black;
-    margin: auto;
-}
-
-#calendar {
-    width: 90%;
-    height: 86%;
-    border: 2px outset black;
-    margin: auto;
-}
-
-#icon_box {
-    display: grid;
-    grid-template-columns: 90% 9% 1%;
-    grid-template-rows: 10% 80% 10%;
-    grid-column: 3/5;
-    grid-row: 1/2;
-    height: 100%;
-    border: 2px outset blue;
-}
-
-#icon {
-    grid-column: 2/3;
-    grid-row: 2/3;
-    width: auto;
-    height: 100%;
-}
-
-#scroll_box {
-    grid-column: 3/5;
-    grid-row: 2/3;
-    overflow: auto;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 95%;
-    border: 2px outset blue;
-    margin: auto;
-}
-
-.task_view {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    min-width: 300px;
-    min-height: 95%;
-    max-height: 95%;
-    height: auto;
-    border: 2px outset red;
-    margin: auto 10px;
-}
-
-.task {
-    height: 90%;
-    border: 2px outset aqua;
-    margin: 0;
-}
-
-.task_name {
-    height: 10%;
-    border: 2px outset green;
-    margin: 0;
-}
-
-#task_add {
-    grid-column: 2/4;
-    grid-row: 3/4;
-    width: 70%;
-    height: 80%;
-    border: 2px outset yellowgreen;
-    margin: auto;
-}
-
-.flex {
-    display: flex;
-    flex-direction: row;
-}
-
-@media screen and (max-width: 640px) {}
-
-@media screen and (min-width: 640px) and (max-width: 800px) {}
-
-@media screen and (min-width: 800px) and (max-width: 1000px) {}
+    
+    p {
+        margin: 0;
+    }
+    
+    #display {
+        display: grid;
+        grid-template-columns: 30% 12% 28% 30%;
+        grid-template-rows: 11% 65% 24%;
+        width: 98vw;
+        height: 98vh;
+        margin: 0;
+    }
+    
+    #calendar_box {
+        display: grid;
+        grid-template-columns: 26% 74%;
+        grid-template-rows: 15% 85%;
+        grid-column: 1/3;
+        grid-row: 1/3;
+        border: 2px outset aqua;
+        width: 93%;
+        height: 93%;
+        margin: auto;
+    }
+    
+    #date {
+        grid-column: 1/3;
+        width: 75%;
+        height: 60%;
+        margin: 30px auto;
+    }
+    
+    .month {
+        width: 33.3%;
+        border: 2px outset black;
+    }
+    
+    .week {
+        width: 33.3%;
+        border: 2px outset black;
+    }
+    
+    .day {
+        width: 33.3%;
+        border: 2px outset black;
+    }
+    
+    #task_filter {
+        width: 72%;
+        height: 86%;
+        border: 2px outset black;
+        margin: auto;
+    }
+    
+    .calendar {
+        width: 90%;
+        height: 86%;
+        border: 2px outset black;
+        margin: auto;
+    }
+    
+    #icon_box {
+        display: grid;
+        grid-template-columns: 90% 9% 1%;
+        grid-template-rows: 10% 80% 10%;
+        grid-column: 3/5;
+        grid-row: 1/2;
+        height: 100%;
+        border: 2px outset blue;
+    }
+    
+    #icon {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    #scroll_box {
+        grid-column: 3/5;
+        grid-row: 2/3;
+        overflow: auto;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 95%;
+        border: 2px outset blue;
+        margin: auto;
+    }
+    
+    .task_view {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        min-width: 300px;
+        min-height: 95%;
+        max-height: 95%;
+        height: auto;
+        border: 2px outset red;
+        margin: auto 10px;
+    }
+    
+    .task {
+        height: 90%;
+        border: 2px outset aqua;
+        margin: 0;
+    }
+    
+    .task_name {
+        height: 10%;
+        border: 2px outset green;
+        margin: 0;
+    }
+    
+    #task_add {
+        grid-column: 2/4;
+        grid-row: 3/4;
+        width: 70%;
+        height: 80%;
+        border: 2px outset yellowgreen;
+        margin: auto;
+    }
+    
+    .flex {
+        display: flex;
+        flex-direction: row;
+    }
+    /***********************************************************************
+* main smart_phone display
+**********************************************************************/
+    
+    #display2 {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 8.3% 54.2% 37.5%;
+        width: 98vw;
+        height: 98vh;
+        margin: 0;
+        border: 2px outset black;
+    }
+    
+    #date_box {
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+        grid-template-rows: 100%;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        border: 2px outset green;
+    }
+    
+    #month_display {
+        width: 72%;
+        height: 80%;
+        max-height: 80%;
+        margin: 0 7% 21% auto;
+        font-size: 125%;
+    }
+    
+    #date2 {
+        width: 100%;
+        height: 80%;
+        margin: auto;
+    }
+    
+    #icon2 {
+        height: 90%;
+        width: auto;
+        max-width: 80%;
+        max-height: 90%;
+        margin: auto;
+    }
+    
+    #s_calendar {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        border: 2px outset red;
+    }
+    
+    #task_box {
+        display: grid;
+        grid-template-columns: 78% 22%;
+        grid-template-rows: 1.5rem 1fr;
+        width: 100%;
+        height: 95%;
+        max-width: 100%;
+        margin: auto;
+        border: 2px outset blue;
+    }
+    
+    #scroll_display {
+        font-size: 50%;
+        grid-column: 1/3;
+        width: auto;
+        max-width: 95%;
+        height: 90%;
+        margin: auto;
+        border: 2px outset greenyellow;
+    }
+    
+    #todo_box {
+        width: 98%;
+        height: 98%;
+        max-width: 98%;
+        min-height: 98%;
+        max-height: 98%;
+        overflow-y: auto;
+        margin: auto;
+        border: 2px outset blue;
+    }
+    
+    .todo {
+        display: grid;
+        grid-template-columns: 3em 5em 8em 1fr;
+        grid-template-rows: 1.5em 3.5em;
+        grid-gap: 2px 5px;
+        gap: 2px 5px;
+        height: 5.5em;
+        width: 98%;
+        min-width: 98%;
+        border: 2px outset red;
+    }
+    
+    .month_view {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        max-width: 95%;
+        max-height: 95%;
+        margin: auto;
+        padding: 2px;
+        border: 2px outset red;
+    }
+    
+    .check_box {
+        display: grid;
+        grid-template-columns: 2.0em 1fr;
+        grid-template-rows: 1.5em 1fr;
+        grid-column: 2/3;
+        grid-row: 2/3;
+        width: 98%;
+        height: 98%;
+        border: 2px outset aqua;
+    }
+    
+    .check_view {
+        grid-column: 2/3;
+        grid-row: 1/3;
+        z-index: 1;
+        width: 2.5em;
+        height: auto;
+        min-height: 2em;
+        margin: auto;
+        /**        border: 2px outset yellow;**/
+    }
+    
+    .check {
+        width: 100%;
+        padding-top: 100%;
+        border: 2px outset red;
+    }
+    
+    .day_view {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 1.5em;
+        height: auto;
+        max-height: 1.5em;
+        border: 2px outset blue;
+        background-color: white;
+        color: blue;
+        font-size: large;
+        z-index: 2;
+    }
+    
+    .time_view {
+        grid-column: 3/4;
+        grid-row: 2/3;
+        max-width: 95%;
+        max-height: 98%;
+        min-width: 95%;
+        min-height: 98%;
+        border: 2px outset green;
+    }
+    
+    .todo_view {
+        grid-column: 4/5;
+        grid-row: 2/3;
+        max-width: 98%;
+        max-height: 98%;
+        min-width: 98%;
+        min-height: 98%;
+        border: 2px outset green;
+    }
+    
+    #task_setting {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 55% 1fr;
+        width: 98%;
+        height: 98%;
+    }
+    
+    #todo_filter {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 8fr;
+    }
+    
+    .setting_button {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        width: 2.5em;
+        height: auto;
+        min-height: 2em;
+        margin: 0 auto;
+        /**        border: 2px outset yellow;**/
+    }
+    
+    .button {
+        width: 100%;
+        padding-top: 100%;
+        border: 2px outset red;
+    }
+    
+    #todo_add {
+        width: 95%;
+        height: 95%;
+        margin: auto;
+    }
+    
+    .setting_button2 {
+        width: 5em;
+        height: 5em;
+        margin: auto;
+        /**        border: 2px outset yellow;**/
+    }
+    
+    .button p {
+        text-align: center;
+        justify-self: auto;
+    }
+    /***********************************************************************
+* media
+**********************************************************************/
+    
+    @media screen and (max-width: 640px) {
+        #display {
+            display: none;
+        }
+        .calendar {
+            height: 95%;
+            margin: 2% auto auto;
+        }
+    }
+    
+    @media screen and (min-width: 640px) and (max-width: 800px) {
+        #display {
+            display: none;
+        }
+        .calendar {
+            height: 95%;
+            margin: 2% auto auto;
+        }
+    }
+    
+    @media screen and (min-width: 800px) and (max-width: 1000px) {
+        #display2 {
+            display: none;
+        }
+    }
