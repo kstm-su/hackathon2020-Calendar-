@@ -29,11 +29,35 @@ function gen_teamid() {
     return $teamid;
 }
 
-$test = gen_teamid();
-echo $test;
+//$test = gen_teamid();
+//echo $test;
 
 
+function join_team($teamid, $credential){
+    $dbh = connectDb();
+    $sth = $dbh->prepare("INSERT INTO Users (userid, teamid) VALUES (:id, :teamid);");
+    $sth->bindValue(':id', $credential, PDO::PARAM_STR);
+    $sth->bindValue(':teamid', $teamid, PDO::PARAM_STR);
+    $sth->execute();
 
+    return 0;
+
+}
+
+function add_team($teamname, $ismyself, $credential) {
+    $teamid = gen_teamid(); 
+    $dbh = connectDb();
+    $sth = $dbh->prepare("INSERT INTO Teams (teamid, teamname, ismyself) VALUES (:teamid, :teamname, :ismyself);");
+    $sth->bindValue(':teamid', $teamid, PDO::PARAM_STR);
+    $sth->bindValue(':teamname', $teamname, PDO::PARAM_STR);
+    $sth->bindValue(':ismyself', $ismyself, PDO::PARAM_INT);
+    $sth->execute();
+    
+    join_team($teamid, $credential);
+    
+    return 0;
+    
+}
 
 
 
