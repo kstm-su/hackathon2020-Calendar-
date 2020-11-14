@@ -1,0 +1,29 @@
+[
+    {
+        "title": "イベント1",
+        "start": "2020-11-15",
+        "end": "2020-11-25",
+        "className": ["event event-01"]
+    },
+    {
+        "title": "イベント2",
+        "start": "2020-11-15",
+        "className": ["event event-02"]
+    },
+    {
+        "title": "イベント3",
+        "start": "2020-11-15",
+        "className": ["event event-03"]
+    },
+    {
+        "title": "イベント4",
+        "start": "2020-12-15",
+        "className": ["event event-04"]
+    },
+    {
+        "title": "イベント5",
+        "start": "2021-01-15",
+        "end": "2019-12-20",
+        "className": ["event event-05"]
+    }
+]

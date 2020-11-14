@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="design2.css">
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
+ 
+
     <title>PC用カレンダーアプリデザイン</title>
 </head>
 
@@ -32,9 +38,10 @@
                 <div id="task_filter">
                     <p>タスク表示フィルタリング用チェックボックス</p>
                 </div>
-
+                
                 <div id="calendar">
                     <p style="text-align: center;">カレンダー</p>
+                    <task-calendar></task-calendar>
                 </div>
 
 
@@ -67,7 +74,9 @@
     </div>
 </div>
 
+<!--
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+-->
 <script src="./main.js"></script>
 </body>
 
