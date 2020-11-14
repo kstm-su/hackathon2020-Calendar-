@@ -10,12 +10,12 @@ mb_http_output("utf-8");
 
 function event_json($credential) {
     $dbh = connectDb();
-    
+
     $sth = $dbh->prepare("SELECT teamid, eventid, eventname, starttime, endtime, priority, memo, istodo, istimetable, color FROM Events WHERE teamid IN (SELECT teamid FROM Users WHERE userid=:id);");
     $sth->bindValue(':id', $credential, PDO::PARAM_STR);
     //to prevent SQLinjection attack
     $sth->execute();
-    
+
     $result = array();
     while($row = $sth->fetch(PDO::FETCH_ASSOC)){
         $result[]=array(
@@ -36,8 +36,8 @@ function event_json($credential) {
 
 function teams_json($credential) {
     $dbh = connectDb();
-    
-    $sth = $dbh->prepare("SELECT teamid teamname ismyself FROM Teams WHERE teamid IN (SELECT teamid FROM Users WHERE userid=:id);");
+
+    $sth = $dbh->prepare("SELECT teamid, teamname, ismyself FROM Teams WHERE teamid IN (SELECT teamid FROM Users WHERE userid=:id);");
     $sth->bindValue(':id', $credential, PDO::PARAM_STR);
     //to prevent SQLinjection attack
     $sth->execute();
@@ -48,7 +48,7 @@ function teams_json($credential) {
             'teamid'=>$row['teamid'],
             'teamname'=>$row['teamname'],
             'ismyself'=>$row['ismyself']
-        );   
+        );
     }
     return $result;
 }
@@ -56,8 +56,8 @@ function teams_json($credential) {
 
 function team_json($teamid) {
     $dbh = connectDb();
-    
-    $sth = $dbh->prepare("SELECT teamid teamname ismyself FROM Teams WHERE teamid=:id;");
+
+    $sth = $dbh->prepare("SELECT teamid, teamname, ismyself FROM Teams WHERE teamid=:id;");
     $sth->bindValue(':id', $teamid, PDO::PARAM_STR);
     //to prevent SQLinjection attack
     $sth->execute();

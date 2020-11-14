@@ -2,6 +2,7 @@
 function query(type, data){
   let tmp_data = {type: type, data: data}
   axios.post('./main.php', JSON.stringify(tmp_data)).then(function(response) {
+    console.log(response.data)
     console.log(response.status)
     return response.data
   }.bind(this)).catch(function(e) {
@@ -32,9 +33,9 @@ function resisterTeam(data){
 }
 
 function registerEvent(data){
-  //{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
+  //{userid:'a', teamid:"ks", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
   let ret = query('newEvent', data)
-  //{teamid:"kstm", eventid:'some' or 'null', eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
+  //{teamid:"ks", eventid:'some' or 'null', eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
   return ret
 }
 

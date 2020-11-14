@@ -140,13 +140,8 @@ Vue.component("task", {
   `
 })
 
-Vue.component("task-view", { //コンポーネントの命名はケバブケースで
+Vue.component("task-view", {
     props: ['view'],
-    // data: function(){
-    //   return{
-    //     tasks: []
-    //   }
-    // },
     methods: {
         addTask: function() {}
     },
@@ -162,8 +157,8 @@ Vue.component("task-view", { //コンポーネントの命名はケバブケー�
   `
 })
 
-// register modal component
 Vue.component("modal", {
+    props:['viewData'],
     data: function () {
         return {
             name: "",
@@ -173,6 +168,7 @@ Vue.component("modal", {
             endTime: "",
             yClick: false,
             nClick: false,
+            team: '',
             memo: "",
             priority: ''
         }
@@ -182,10 +178,18 @@ Vue.component("modal", {
             this.yClick = true;
             this.nClick = false;
         },
-
         noClick: function () {
             this.nClick = true;
             this.yClick = false;
+        },
+        regEvent: function(){
+          //{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
+          let t = 0;
+          for(let i = 0; i < this.$parent.taskViews.length; i++) if(this.$parent.taskViews[i].name == this.team) t = this.$parent.taskViews[i].teamid
+          let res = registerEvent({userid:this.$parent.userid, teamid:t})
+          if(res['eventid']==null) console.log('not registered!')
+          else console.log('registered!')
+          $emit('close')
         }
     },
     template: `
@@ -228,6 +232,7 @@ Vue.component("modal", {
 
                   <div class="flex">
                           <p>属するタスク郡</p>
+                      <input v-model="team">
                   </div>
 
                   <div class="flex">
@@ -253,7 +258,7 @@ Vue.component("modal", {
             </div>
             <div class="modal-footer">
               <slot name="footer">
-                <button class="modal-default-button" @click="$emit('close')">
+                <button class="modal-default-button" @click="regEvent">
                   OK
                 </button>
               </slot>
@@ -282,11 +287,13 @@ function sortend(task) {
 new Vue({
     el: "#app",
     data: {
+        userid: "mememe",
         showIconbox: false,
         showModal: false,
         taskViews: [
             {
                 name: 'me',
+                teamid: 0,
                 tasks: [
                     {
                         name: "a",
@@ -321,54 +328,63 @@ new Vue({
             },
             {
                 name: 'team1',
+                teamid: 1,
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team2',
+                teamid: 2,
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team3',
+                teamid: 3,
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team4',
+                teamid: 4,
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team5',
+                teamid: 5,
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team6',
+                teamid: 6,
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team7',
+                teamid: 7,
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team8',
+                teamid: 8,
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
-                name: 'team9',
+                name: 'kstm',
+                teamid: 9,
                 tasks: [
                     { name: 'study' }
                 ]
