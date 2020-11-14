@@ -1,5 +1,8 @@
 version: '3'
 
+volumes:
+  mysql_data:
+
 services:
   web:
     container_name: web
@@ -16,7 +19,8 @@ services:
     container_name: mysql
     build: ./MySQL
     volumes:
-      - ./MySQL/DB:/var/lib/mysql
-    # image: original_mysql_world
+      - mysql_data:/var/lib/mysql:delegated
     environment:
       - MYSQL_ROOT_PASSWORD=kstm
+    ports:
+      - "3306:3306"

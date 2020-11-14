@@ -4,11 +4,20 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="design2.css">
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://unpkg.com/vue"></script>
+>>>>>>> origin/php_hirominn
     <title>PC用カレンダーアプリデザイン</title>
 </head>
 
 <body>
+<<<<<<< HEAD
 
+=======
+<div id="app">
+>>>>>>> origin/php_hirominn
     <div id="display">
 
         <div id="calendar_box">
@@ -44,6 +53,7 @@
         </div>
 
         <div id="scroll_box">
+<<<<<<< HEAD
 
             <div class="task_view">
                 <div class="task">
@@ -137,3 +147,21 @@
 </body>
 
 </html>
+=======
+          <task-view v-for="view in taskViews" v-bind:key="view.name" v-bind:view="view"></taskView>
+        </div>
+
+        <div id="task_add">
+            <button id="show-modal" @click="showModal = true">タスクの追加</button>
+            <modal v-if="showModal" @close="showModal = false">
+                <h3 slot="header">タスクの追加</h3>
+            </modal>
+        </div>
+
+    </div>
+</div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
+>>>>>>> origin/php_hirominn
