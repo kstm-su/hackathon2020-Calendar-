@@ -59,6 +59,35 @@ function add_team($teamname, $ismyself, $credential) {
     
 }
 
+function leave_team($teamid ,$credential){
+    $dbh = connectDb();
+    $sth = $dbh->prepare("DELETE FROM Users WHERE userid=:id AND teamid=:teamid);");
+    $sth->bindValue(':id', $credential, PDO::PARAM_STR);
+    $sth->bindValue(':teamid', $teamid, PDO::PARAM_STR);
+    $sth->execute();
+    
+    return 0;
+}
+
+
+function update_team($teamid, $teamname, $color) {
+    $dbh = connectDb();
+    $sth = $dbh->prepare("UPDATE FROM Teams SET teamname=:teamname, color=:color WHERE teamid=:teamid;");
+    $sth->bindValue(':teamid', $teamid, PDO::PARAM_STR);
+    $sth->bindValue(':teamname', $teamname, PDO::PARAM_STR);
+    $sth->bindValue(':color', $color, PDO::PARAM_STR);
+    $sth->execute();
+    
+    return 0;
+}
+
+function add_event(){
+
+
+
+
+}
+
 
 
 
