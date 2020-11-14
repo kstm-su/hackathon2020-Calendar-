@@ -6,49 +6,79 @@
     <link rel="stylesheet" href="design2.css">
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://unpkg.com/vue"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
+
+    <!--main.jsのtask-filter用のcss-->
+    <style>
+        .active {
+          color: rgb(28, 24, 255);
+        }
+    </style>
+
+
     <title>PC用カレンダーアプリデザイン</title>
 </head>
 
 <body>
-<div id="app">
-    <div id="display">
+    <div id="app">
+        <div id="display">
 
-        <div id="calendar_box">
-            <div class="flex" id="date">
-                <div id="month">
-                    <p>month</p>
+            <div id="calendar_box">
+                <div class="flex" id="date">
+                    <div id="month">
+                        <p>month</p>
+                    </div>
+
+                    <div id="week">
+                        <p>week</p>
+                    </div>
+
+                    <div id="day">
+                        <p>day</p>
+                    </div>
+
                 </div>
 
-                <div id="week">
-                    <p>week</p>
+                <div id="task_filter">
+                    <p>タスク表示フィルタリング用チェックボックス</p>
+                        <task-filter v-for="view in taskViews" v-bind:key="view.name" v-bind:filter="view" ></task-filter>
                 </div>
 
-                <div id="day">
-                    <p>day</p>
+                <div id="calendar">
+                    <p style="text-align: center;">カレンダー</p>
+                    <task-calendar></task-calendar>
                 </div>
+
 
             </div>
 
-            <div id="task_filter">
-                <p>タスク表示フィルタリング用チェックボックス</p>
+            <div id="icon_box">
+                <p>アイコンボックス</p>
+                <button type="submit" id="show-Iconbox" @click="showIconbox = true">
+                    <img src = "icon.png" alt="アイコン" id="icon">
+                </button>
+                <iconbox v-if="showIconbox" @close="showIconbox = false">
+                    <p>アイコンボックス</p>
+                </iconbox>
             </div>
 
-            <div id="calendar">
-                <p style="text-align: center;">カレンダー</p>
-                <task-calendar></task-calendar>
+            <div id="scroll_box">
+                <task-view v-for="view in taskViews" v-bind:key="view.name" v-bind:view="view">
+                    </taskView>
             </div>
 
-        </div>
-
-        <div id="icon_box">
-            <p>アイコンボックス</p>
-            <img id="icon" src="icon.png">
-        </div>
-
-        <div id="scroll_box">
-          <task-view v-for="view in taskViews" v-bind:key="view.name" v-bind:view="view"></taskView>
-        </div>
+            <div id="task_add">
+                <button id="show-modal" @click="showModal = true">タスクの追加</button>
+                <modal v-if="showModal" @close="showModal = false">
+                    <h3 slot="header">タスクの追加</h3>
+                </modal>
+            </div>
 
         <div id="task_add">
             <button id="show-modal" @click="showModal = true">タスクの追加</button>
@@ -60,9 +90,6 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
 <script src="./app.js"></script>
 <script src="./main.js"></script>
 </body>
