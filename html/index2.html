@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="design2.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://unpkg.com/vue"></script>
+    <title>PC用カレンダーアプリデザイン</title>
+</head>
+
+<body>
+<div id="app">
+    <div id="display">
+
+        <div id="calendar_box">
+            <div class="flex" id="date">
+                <div id="month">
+                    <p>month</p>
+                </div>
+
+                <div id="week">
+                    <p>week</p>
+                </div>
+
+                <div id="day">
+                    <p>day</p>
+                </div>
+
+            </div>
+
+            <div id="task_filter">
+                <p>タスク表示フィルタリング用チェックボックス</p>
+            </div>
+
+            <div id="calendar">
+                <p style="text-align: center;">カレンダー</p>
+            </div>
+
+
+        </div>
+
+        <div id="icon_box">
+            <p>アイコンボックス</p>
+            <img id="icon" src="icon.png">
+        </div>
+
+        <div id="scroll_box">
+          <task-view v-for="view in taskViews" v-bind:key="view.name" v-bind:view="view"></taskView>
+        </div>
+
+        <div id="task_add">
+            <button id="show-modal" @click="showModal = true">タスクの追加</button>
+            <modal v-if="showModal" @close="showModal = false">
+                <h3 slot="header">タスクの追加</h3>
+            </modal>
+        </div>
+
+    </div>
+</div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
