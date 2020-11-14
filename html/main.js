@@ -3,6 +3,9 @@ Vue.component("task", {
     template: `
     <div class="task">
         <p>{{task.name}}</p>
+        <p>期限:{{task.end}}</p>
+        <p>優先度:{{task.priority}}</p>
+        <p>メモ:{{task.memo}}</p>
     </div>
   `
 })
@@ -140,10 +143,10 @@ Vue.component("modal", {
 function sortend(task) {
     task.sort(
         function (a, b) {
-            if (a.end < b.end) return -1;
-            if (a.end > b.end) return 1;
-            if (a.priority < b.priority) return -1;
-            if (a.priority > b.priority) return 1;
+            if (a.end > b.end) return -1;
+            if (a.end < b.end) return 1;
+            if (a.priority > b.priority) return -1;
+            if (a.priority < b.priority) return 1;
         }
     );
     return task;
@@ -164,7 +167,7 @@ new Vue({
                         end:"2020-01-02 00:00:03",
                         yClick: false,
                         nClick: false,
-                        memo: "",
+                        memo: "aaaaaaa",
                         priority: '1'
                     },
 
@@ -174,18 +177,18 @@ new Vue({
                         end:"2020-01-02 00:00:03",
                         yClick: false,
                         nClick: false,
-                        memo: "",
+                        memo: "bbbbbbbbbb",
                         priority: '0'
                     },
 
                     {
                         name: "c",
                         start:"2020-01-01 00:00:00",
-                        end:"2020-01-01 00:00:01",
+                        end:"2020-01-02 00:00:04",
                         yClick: false,
                         nClick: false,
-                        memo: "",
-                        priority: ''
+                        memo: "ccccccccccccc",
+                        priority: '1'
                     }
                 ]
             },
@@ -246,7 +249,7 @@ new Vue({
         ]
     },
   methods: {
-      clickEvent: function () {
+      clickEvent: function () {//押せばタスクが更新される(テスト用)
           let n;
           let t;
           for (let n = 0; n < this.taskViews.length; n++) {
