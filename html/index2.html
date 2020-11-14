@@ -17,7 +17,7 @@
     <!--main.jsのtask-filter用のcss-->
     <style>
         .active {
-          color: rgb(28, 24, 255);
+            color: rgb(28, 24, 255);
         }
     </style>
 
@@ -47,7 +47,7 @@
 
                 <div id="task_filter">
                     <p>タスク表示フィルタリング用チェックボックス</p>
-                        <task-filter v-for="view in taskViews" v-bind:key="view.name" v-bind:filter="view" ></task-filter>
+                    <task-filter v-for="view in taskViews" v-bind:key="view.name" v-bind:filter="view"></task-filter>
                 </div>
 
                 <div class="calendar">
@@ -61,8 +61,8 @@
 
             <div id="icon_box">
                 <p>アイコンボックス</p>
-                <button type="submit" id="icon" @click="showIconbox = true">
-                    <img src = "icon.png" alt="アイコン"/>
+                <button type="submit" class="icon" @click="showIconbox = true">
+                    <img src = "icon.png" alt="アイコン" class="icon" />
                 </button>
                 <iconbox v-if="showIconbox" @close="showIconbox = false">
                     <p>アイコンボックス</p>
@@ -81,14 +81,15 @@
                 </modal>
             </div>
 
-        <div id="task_add">
-            <button id="show-modal" @click="showModal = true">タスクの追加</button>
-            <button @click="clickEvent">タスクの更新</button><!--テスト用-->
-            <modal v-if="showModal" @close="showModal = false">
-                <h3 slot="header">タスクの追加</h3>
-            </modal>
+            <div id="task_add">
+                <button id="show-modal" @click="showModal = true">タスクの追加</button>
+                <button @click="clickEvent">タスクの更新</button>
+                <!--テスト用-->
+                <modal v-if="showModal" @close="showModal = false">
+                    <h3 slot="header">タスクの追加</h3>
+                </modal>
+            </div>
         </div>
-
         <div id="display2">
             <div id="date_box">
                 <div id="month_display">
@@ -109,7 +110,7 @@
                     </div>
                 </div>
 
-                <img id="icon2" src="icon.png">
+                <img class="icon2" src="icon.png">
             </div>
 
             <div id="s_calendar">
@@ -247,7 +248,7 @@
 
         </div>
     </div>
-    </div>
+
     <script src="./app.js"></script>
     <script src="./main.js"></script>
 </body>
