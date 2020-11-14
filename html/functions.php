@@ -13,7 +13,7 @@ function connectDb() {
 }
 
 function gen_teamid() {
-    $jsonurl = 'words.json';
+    $jsonurl = './words/words.json';
     $json = file_get_contents($jsonurl);
     $words = json_decode($json, true);
     $keys = array_rand($words, 3);
@@ -24,7 +24,8 @@ function gen_teamid() {
         $teamid = $teamid.'-'.$words[$key];
     }
     
-    $teamid = preg_replace('/-/0', '', $teamid);
+    $teamid = preg_replace('[\']','',$teamid);
+    $teamid = substr($teamid, 1);
     return $teamid;
 }
 
