@@ -39,6 +39,7 @@ switch($data["type"]){
     break;
 }
 
+header('Content-type: application/json');
 echo json_encode($response,JSON_UNESCAPED_UNICODE);;
 
 ?>

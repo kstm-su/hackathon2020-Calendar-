@@ -1,14 +1,14 @@
 
-function query(type, data){
+async function query(type, data){
   let tmp_data = {type: type, data: data}
-  let ret;
-  axios.post('./main.php', JSON.stringify(tmp_data)).then(function(response) {
+  let ret = await axios.post('./main.php', JSON.stringify(tmp_data)).then(function(response) {
     console.log(response.data)
     console.log(response.status)
-    return response.data[resrponse.data.length-1]
-  }.bind(this)).catch(function(e) {
+    return response.data
+  }).catch(function(e) {
     console.error(e)
   })
+  return ret
 }
 
 
@@ -32,9 +32,9 @@ function resisterTeam(data){
   //{userid:'a', teamid:'c'}
 }
 
-function registerEvent(data){
+async function registerEvent(data){
   //{userid:'a', teamid:"ks", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
-  return ret = query('newEvent', data)
+  return query('newEvent', data)
   //{teamid:"ks", eventid:'some' or 'null', eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
 }
 

@@ -183,14 +183,18 @@ Vue.component("modal", {
             this.yClick = false;
         },
         regEvent: function(){
+          async function temp(data){ return registerEvent(data)}
           //{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
           let t = 0;
           for(let i = 0; i < this.$parent.taskViews.length; i++) if(this.$parent.taskViews[i].name == this.team) t = i
           console.log({userid:this.$parent.userid, teamid:this.$parent.taskViews[t].teamid, eventname:this.name, starttime:this.startDay + ' ' + this.startTime + ':00', endtime:this.endDay + ' ' + this.endTime + ':00', memo:this.memo, priority:this.priority, istodo:0, istimetable:0})
-          let res = registerEvent({userid:this.$parent.userid, teamid:this.$parent.taskViews[t].teamid, eventname:this.name, starttime:this.startDay + ' ' + this.startTime + ':00', endtime:this.endDay + ' ' + this.endTime + ':00', memo:this.memo, priority:this.priority, istodo:0, istimetable:0})
-          if(res['eventid']==null) console.log('not registered!')
-          else console.log('registered!')
-          $emit('close')
+          registerEvent({userid:this.$parent.userid, teamid:this.$parent.taskViews[t].teamid, eventname:this.name, starttime:this.startDay + ' ' + this.startTime + ':00', endtime:this.endDay + ' ' + this.endTime + ':00', memo:this.memo, priority:this.priority, istodo:0, istimetable:0}).then((res) =>{
+            if(res[res.length-1]['eventid']==null) console.log('not registered!')
+            else{
+              console.log('registered!')
+              this.$parent.taskViews[t].tasks = res
+            }
+          }).then(this.$emit('close'))
         }
     },
     template: `
