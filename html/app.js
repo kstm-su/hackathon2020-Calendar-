@@ -5,11 +5,10 @@ function query(type, data){
   axios.post('./main.php', JSON.stringify(tmp_data)).then(function(response) {
     console.log(response.data)
     console.log(response.status)
-    ret = response.data
+    return response.data[resrponse.data.length-1]
   }.bind(this)).catch(function(e) {
     console.error(e)
   })
-  return ret
 }
 
 
@@ -29,16 +28,14 @@ function loginUser(data){
 
 function resisterTeam(data){
   //{userid:'a', teamid:'c'}
-  let ret = query('newTeam', data)
+  return ret = query('newTeam', data)
   //{userid:'a', teamid:'c'}
-  return ret
 }
 
 function registerEvent(data){
   //{userid:'a', teamid:"ks", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
-  let ret = query('newEvent', data)
+  return ret = query('newEvent', data)
   //{teamid:"ks", eventid:'some' or 'null', eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
-  return ret
 }
 
 function deleteEvent(data){

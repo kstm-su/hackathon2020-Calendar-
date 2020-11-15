@@ -7,6 +7,9 @@ $data = json_decode($json, true);
 $response = "";
 $querydata = $data["data"];
 
+// add_event($querydata["teamid"], $querydata["eventname"], $querydata["starttime"], $querydata["endtime"], $querydata["priority"], $querydata["memo"], $querydata["istodo"], $querydata["istimetable"]);
+// $response = event_json($querydata["userid"]);
+
 switch($data["type"]){
   case 'newUser': //{userid:'a'}
     break;
