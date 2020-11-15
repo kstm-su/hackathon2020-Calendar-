@@ -185,9 +185,9 @@ Vue.component("modal", {
         regEvent: function(){
           //{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
           let t = 0;
-          for(let i = 0; i < this.$parent.taskViews.length; i++) if(this.$parent.taskViews[i].name == this.team) t = this.$parent.taskViews[i].teamid
-          console.log({userid:this.$parent.userid, teamid:t, eventname:this.name, starttime:this.startDay + ' ' + this.startTime + ':00', endtime:this.endDay + ' ' + this.endTime + ':00', memo:this.memo, priority:this.priority, istodo:'true', istimetable:'true'})
-          let res = registerEvent({userid:this.$parent.userid, teamid:t, eventname:this.name, starttime:this.startDay + ' ' + this.startTime + ':00', endtime:this.endDay + ' ' + this.endTime + ':00', memo:this.memo, priority:this.priority, istodo:'true', istimetable:'true'})
+          for(let i = 0; i < this.$parent.taskViews.length; i++) if(this.$parent.taskViews[i].name == this.team) t = i
+          console.log({userid:this.$parent.userid, teamid:this.$parent.taskViews[t].teamid, eventname:this.name, starttime:this.startDay + ' ' + this.startTime + ':00', endtime:this.endDay + ' ' + this.endTime + ':00', memo:this.memo, priority:this.priority, istodo:0, istimetable:0})
+          let res = registerEvent({userid:this.$parent.userid, teamid:this.$parent.taskViews[t].teamid, eventname:this.name, starttime:this.startDay + ' ' + this.startTime + ':00', endtime:this.endDay + ' ' + this.endTime + ':00', memo:this.memo, priority:this.priority, istodo:0, istimetable:0})
           if(res['eventid']==null) console.log('not registered!')
           else console.log('registered!')
           $emit('close')
@@ -288,13 +288,13 @@ function sortend(task) {
 new Vue({
     el: "#app",
     data: {
-        userid: "mememe",
+        userid: '1',
         showIconbox: false,
         showModal: false,
         taskViews: [
             {
                 name: 'me',
-                teamid: 0,
+                teamid: 'a',
                 tasks: [
                     {
                         name: "a",
@@ -329,63 +329,63 @@ new Vue({
             },
             {
                 name: 'team1',
-                teamid: 1,
+                teamid: 'a',
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team2',
-                teamid: 2,
+                teamid: 'a',
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team3',
-                teamid: 3,
+                teamid: 'a',
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team4',
-                teamid: 4,
+                teamid: 'a',
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team5',
-                teamid: 5,
+                teamid: 'a',
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team6',
-                teamid: 6,
+                teamid: 'a',
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team7',
-                teamid: 7,
+                teamid: 'a',
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'team8',
-                teamid: 8,
+                teamid: 'a',
                 tasks: [
                     { name: 'study' }
                 ]
             },
             {
                 name: 'kstm',
-                teamid: 9,
+                teamid: 'clubroom-imbibe-compost',
                 tasks: [
                     { name: 'study' }
                 ]
