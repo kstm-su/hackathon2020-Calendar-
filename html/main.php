@@ -26,6 +26,10 @@ switch($data["type"]){
     $response = event_json($querydata["userid"]);
     break;
 
+  case 'nowEvents':
+    $response = event_json($querydata["userid"]);
+    break;
+
   case 'deleteEvent'://{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
     break;
 

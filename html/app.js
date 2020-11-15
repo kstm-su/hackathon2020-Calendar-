@@ -38,6 +38,10 @@ async function registerEvent(data){
   //{teamid:"ks", eventid:'some' or 'null', eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
 }
 
+async function fetchEvents(data){
+  return query('newEvent', data)
+}
+
 function deleteEvent(data){
   //{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
   let ret = query('deleteteEvent', data)

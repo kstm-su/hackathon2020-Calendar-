@@ -1,3 +1,5 @@
+
+ //カレンダー部分は外部サイト(https://www.almondlab.jp/labs/1449)よりコピー
 function initCalendar (data) {
     //本日、カレンダーの開始日、終了日と、曜日のテキストを用意します
     let date_now = new Date();
@@ -109,7 +111,7 @@ Vue.component("iconbox", {
               <slot name="body">
 
                   <div class="flex">
-                      <p>テーマ</p>
+                      <p>チーム</p>
                       <input v-model="name">
                   </div>
               </slot>
@@ -133,7 +135,7 @@ Vue.component("task", {
     template: `
     <div class="task">
         <p>{{task.name}}</p>
-        <p>期限:{{task.end}}</p>
+        <p>期限:{{task.endtime}}</p>
         <p>優先度:{{task.priority}}</p>
         <p>メモ:{{task.memo}}</p>
     </div>
@@ -279,8 +281,8 @@ Vue.component("modal", {
 function sortend(task) {
     task.sort(
         function (a, b) {
-            if (a.end > b.end) return -1;
-            if (a.end < b.end) return 1;
+            if (a.endtime < b.endtime) return -1;
+            if (a.endtime > b.endtime) return 1;
             if (a.priority > b.priority) return -1;
             if (a.priority < b.priority) return 1;
         }
