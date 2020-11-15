@@ -44,13 +44,14 @@ function join_team($teamid, $credential){
 
 }
 
-function add_team($teamname, $ismyself, $credential) {
+function add_team($teamname, $ismyself, $credential, $color) {
     $teamid = gen_teamid();
     $dbh = connectDb();
-    $sth = $dbh->prepare("INSERT INTO Teams (teamid, teamname, ismyself) VALUES (:teamid, :teamname, :ismyself);");
+    $sth = $dbh->prepare("INSERT INTO Teams (teamid, teamname, ismyself color) VALUES (:teamid, :teamname, :ismyself, :color);");
     $sth->bindValue(':teamid', $teamid, PDO::PARAM_STR);
     $sth->bindValue(':teamname', $teamname, PDO::PARAM_STR);
     $sth->bindValue(':ismyself', $ismyself, PDO::PARAM_INT);
+    $sth->bindValue(':color', $color, PDO::PARAM_INT);
     $sth->execute();
 
     join_team($teamid, $credential);
