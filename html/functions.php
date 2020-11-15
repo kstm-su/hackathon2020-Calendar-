@@ -10,7 +10,6 @@ function connectDb() {
         echo $e->getMessage();
         exit;
     }
-
 }
 
 function gen_teamid() {
