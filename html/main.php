@@ -19,6 +19,7 @@ switch($data["type"]){
     break;
 
   case 'newEvent'://{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
+    add_event($querydata["teamid"], $querydata["eventname"], $querydata["starttime"], $querydata["endtime"], $querydata["priority"], $querydata["memo"], $querydata["istodo"], $querydata["istimetable"]);
     $response = event_json($querydata["userid"]);
     break;
 

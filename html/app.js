@@ -1,13 +1,15 @@
 
 function query(type, data){
   let tmp_data = {type: type, data: data}
+  let ret;
   axios.post('./main.php', JSON.stringify(tmp_data)).then(function(response) {
     console.log(response.data)
     console.log(response.status)
-    return response.data
+    ret = response.data
   }.bind(this)).catch(function(e) {
     console.error(e)
   })
+  return ret
 }
 
 

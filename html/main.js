@@ -186,7 +186,8 @@ Vue.component("modal", {
           //{userid:'a', teamid:"kstm", eventname:"LT", starttime:'2020-11-14 11:00:00', endtime:'2020-11-15 16:00:00', priority:'3', memo:'hello', istodo:'true', istimetable:'true'}
           let t = 0;
           for(let i = 0; i < this.$parent.taskViews.length; i++) if(this.$parent.taskViews[i].name == this.team) t = this.$parent.taskViews[i].teamid
-          let res = registerEvent({userid:this.$parent.userid, teamid:t})
+          console.log({userid:this.$parent.userid, teamid:t, eventname:this.name, starttime:this.startDay + ' ' + this.startTime + ':00', endtime:this.endDay + ' ' + this.endTime + ':00', memo:this.memo, priority:this.priority, istodo:'true', istimetable:'true'})
+          let res = registerEvent({userid:this.$parent.userid, teamid:t, eventname:this.name, starttime:this.startDay + ' ' + this.startTime + ':00', endtime:this.endDay + ' ' + this.endTime + ':00', memo:this.memo, priority:this.priority, istodo:'true', istimetable:'true'})
           if(res['eventid']==null) console.log('not registered!')
           else console.log('registered!')
           $emit('close')
