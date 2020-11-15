@@ -36,6 +36,10 @@ function isnewuser($user_credential){
 }
 
 
+$bool = isnewuser($user_credential);
+if($bool){
+    print('Authorization Failed')
+}
 
 
 $_SESSION['login'] = true;
